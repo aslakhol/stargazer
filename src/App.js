@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Card from './components/Card.js';
+import Modal from './components/Modal.js';
+
 import { simpleAction } from './actions/simpleAction'
 
-import logo from './logo.svg';
-import './App.css';
-import { dispatch } from 'rxjs/internal/observable/range';
-
 class App extends Component {
-
   simpleAction = (event) => {
     this.props.simpleAction();
   }
@@ -16,18 +14,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <pre>
-          {
-            JSON.stringify(this.props)
-          }
-        </pre>
-          <button onClick={this.simpleAction}>Test redux action</button>
-        </header>
+        <div className="col-md-3 mb-3">
+          <Card />
+        </div>
       </div>
     );
   }
