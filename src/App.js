@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import Card from './components/Card.js';
-import Modal from './components/Modal.js';
-
-import { simpleAction } from './actions/simpleAction'
+import Search from "./components/search/index.js";
+import { simpleAction } from './actions/simpleAction';
 
 class App extends Component {
   simpleAction = (event) => {
@@ -15,7 +12,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="col-md-3 mb-3">
-          <Card />
+          <Search />
         </div>
       </div>
     );

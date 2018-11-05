@@ -5,7 +5,7 @@ export default class Search extends Component {
   token = null;
   state = {
     query: "",
-    people: []
+    people: [],
   };
 
   onChange = e => {
@@ -40,7 +40,11 @@ export default class Search extends Component {
           aria-describedby="basic-addon2"
           onChange={this.onChange}
         />
-        {JSON.stringify(this.state.people)}
+        {this.state.people.map(person => (
+          <h2>
+            {person.name}
+          </h2>
+        ))}
       </div>
     )
   }
