@@ -8,7 +8,7 @@ import {
 import ModalExample from './components/ModalExample';
 import CardExample from './components/CardExample';
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor(props) {
     super(props);
 
