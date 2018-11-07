@@ -7,26 +7,23 @@ import {
 } from 'reactstrap';
 import ModalExample from './components/ModalExample';
 import CardExample from './components/CardExample';
-import { simpleAction } from './actions/simpleAction';
 
-class App extends React.Component {
-  simpleAction = (event) => {
-    this.props.simpleAction();
-  }
-
+export class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.toggle = () => this.toggle();
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
   }
+
   toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen,
+    }));
   }
+
   render() {
     return (
       <div>
@@ -55,11 +52,11 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state
-})
+  ...state,
+});
 
 const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
-})
+  simpleAction: () => dispatch(),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
