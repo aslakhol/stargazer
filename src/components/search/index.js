@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
 
+const url = "https://swapi.co/api/people?search=";
+
+
 export default class Search extends Component {
 
-  token = null;
   state = {
     query: "",
     people: [],
   };
 
-  onChange = e => {
-    const { value } = e.target;
-    this.setState({
-      query: value
-    })
-    this.search(value);
-  }
-
-  search = query => {
-    const url = `https://swapi.co/api/people?search=${query}`;
-    const token = {};
-    this.token = token;
-
-    fetch(url)
+  getInfo = () => {
+    fetch(`${url}${this.state.query}`)
       .then(results => results.json())
       .then(data => {
-        if (this.token === token) {
-          this.setState({ people: data.results });
-        }
+        this.setState({
+          people: data.results
+        })
       });
-  };
+  }
+
+  handleChange = () => {
+    this.setState({
+      query: this.search.value
+    }, () => {
+      if (this.state.query && this.state.query.length > 1) {
+        this.getInfo()
+      }
+    })
+  }
 
   render() {
     return (
@@ -38,12 +38,13 @@ export default class Search extends Component {
           className="form-control"
           placeholder="Søk på diverse her!"
           aria-describedby="basic-addon2"
-          onChange={this.onChange}
+          ref={input => this.search = input}
+          onChange={this.handleChange}
         />
         {this.state.people.map(person => (
-          <h2>
-            {person.name}
-          </h2>
+        <h2>
+          {person.name}
+        </h2>
         ))}
       </div>
     )
