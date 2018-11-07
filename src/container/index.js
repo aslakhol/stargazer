@@ -3,23 +3,25 @@ import { connect } from 'react-redux';
 import {
   Container,
 } from 'reactstrap';
-import Search from "./components/search/index"
-import { fetchPersons } from './actions/index';
+import Search from "../components/search/index"
+import { fetchItems } from '../actions/index'
+import Results from '../components/results'
 
 class App extends React.Component {
 
   constructor(props){
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.setState(this.items = [], this.newQuery="")
   }
 
   componentDidMount() {
     const { dispatch, newQuery } = this.props;
-    dispatch(fetchPersons(newQuery));
+    dispatch(fetchItems(newQuery));
   }
   
   handleChange(newQuery) {
-    this.props.dispatch(fetchPersons(newQuery));
+    this.props.dispatch(fetchItems(newQuery));
   }
 
   render() {
@@ -29,6 +31,7 @@ class App extends React.Component {
       <div>
         <Container>
           <Search value={newQuery} onChange={this.handleChange} />
+          <Results items={items} />
         </Container>
       </div>
     );

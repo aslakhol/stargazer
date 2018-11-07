@@ -3,7 +3,7 @@ import {
   NEW_QUERY,
   REQUEST_PERSON,
   RECIEVE_PERSON,
-} from "../actions/index"
+} from "../constants/types"
 
 function newQuery(state = "", action) {
   switch (action.type) {
@@ -34,7 +34,6 @@ function items(state = {
       return state;
   }
 }
-
 
 function namesByQuery(state = {}, action) {
   switch(action.type) {
