@@ -30,7 +30,7 @@ function items(array){
   });
   return personArray.map((item) => {
     return {
-      type: 'person',
+      type: "person",
       name: item.name,
       gender: item.gender,
       height: item.height,
@@ -39,47 +39,38 @@ function items(array){
   })
 }
 
+function fetchPersons(newQuery){
+  const endpoint = [
+    `https://swapi.co/api/people?search=${newQuery}`,
+  ];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const showPerson = personId => ({
-  type: ADD_PERSON,
-  personId
-})
-
-function requestPerson(name){
-  return {
-    type: REQUEST_PERSON,
-    name
-  }
+  return (dispatch) => {
+    dispatch(updateQuery(newQuery));
+    dispatch(requestPerson(newQuery));
+    return (endpoint.map(url => 
+      fetch(url).then(resp => resp.json())
+    ))
+    .then(array => items(array))
+    .then(json => dispatch(recievePerson(newQuery, json)));
+  };
 }
 
-function recievePerson(name, json){
-  return {
-    type: RECIEVE_PERSON,
-    name,
-    persons: json.data.children.map(child => child.data),
+function shouldFetch(state, newQuery) {
+  const stuff = state.itemsByQuery[newQuery];
+  if (!stuff){
+    return true;
+  } else if (stuff.isFetching){
+    return false;
   }
+  return false;
 }
 
-
-export function getPerson(name) {
-  return dispatch => {
-    dispatch(requestPerson(name))
-    return fetch(`https://swapi.co/api/people?search=${name}.json`)
-      .then(response => response.json())
-      .then(json => dispatch(recievePerson(name, json)))
+export function fetchItems(newQuery) {
+  return(dispatch, getState) => {
+    if(shouldFetch(getState(), newQuery)){
+      return dispatch(fetchPersons(newQuery));
+    }
+    return dispatch(updateQuery(newQuery));
   }
 }
 

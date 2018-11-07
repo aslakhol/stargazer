@@ -1,33 +1,54 @@
 import { combineReducers } from 'redux'
 import {
-  ADD_PERSON,
+  NEW_QUERY,
   REQUEST_PERSON,
   RECIEVE_PERSON,
 } from "../actions/index"
 
-function searchedName(state = "test", action) {
+function newQuery(state = "", action) {
   switch (action.type) {
-    case ADD_PERSON:
-      return action.name
-    default:
-      return state
-  }
-}
-
-/*function names(
-  state = {
-    items: []
-  },
-  action
-) {
-  switch (action.type){
-    case REQUEST_PERSON:
-      return Object.assign({}, state, {
-        isFetching: true,
-      })
+    case NEW_QUERY:
+      return action.newQuery;
     default:
       return state;
   }
-} */
+}
 
-function namesByOrder(state = {})
+function items(state = {
+  isFetching: false,
+  newQuery: "",
+  items: [],
+}, action) {
+  switch (action.type){
+    case REQUEST_PERSON:
+      return Object.assign({}, state, {
+        newQuery: action.newQuery,
+        isFetching: true,
+      });
+    case RECIEVE_PERSON:
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: action.items,
+      });
+    default:
+      return state;
+  }
+}
+
+
+function namesByQuery(state = {}, action) {
+  switch(action.type) {
+    case RECIEVE_PERSON:
+    case REQUEST_PERSON:
+      return Object.assign({}, state, {
+        [action.newQuery]: items(state[action.newQuery]), action,
+      });
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({
+  namesByQuery,
+  newQuery
+})
