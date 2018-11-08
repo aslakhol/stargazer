@@ -1,41 +1,15 @@
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-  - p4-frontend/.npm/
-  - p4-frontend/cache/Cypress
-  - p4-frontend/node_modules/
-  - p4-frontend/package-lock.json
-
 image: cypress/base:10
-
-variables:
-  npm_config_cache: "$CI_PROJECT_DIR/p4-frontend/.npm"
-  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/p4-frontend/cache/Cypress"
-
-# cache using branch name
-# https://gitlab.com/help/ci/caching/index.md
 
 stages:
   - build
   - fresh_build
   - test
 
-before_script:
-  - cd p4-frontend
-
 build-job:
   stage: build
   script:
-    - cd p4-frontend
-    - npm ci
+    - npm run build
     - npm run e2e:verify
-
-build-job-from-bottom-if-no-cache:
-  stage: fresh_build
-  script:
-    - npm install
-    - npm run e2e:verify
-  when: on_failure
 
 unittest-job:
   stage: test
@@ -49,11 +23,5 @@ integrationtest-job:
   # start the server in the background
     - npm start --silent &
   # run Cypress test in load balancing mode, pass id to tie jobs together
-    - npm run e2e --record
+    - npm run e2e
   when: always
-  artifacts:
-    expire_in: 1 week
-    when: always
-    paths:
-    - p4-frontend/cypress/screenshots
-    - p4-frontend/cypress/videos
