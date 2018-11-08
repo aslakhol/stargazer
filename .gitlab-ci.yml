@@ -6,13 +6,13 @@ stages:
 
 variables:
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
-  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/root/cache/Cypress"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/.cache/Cypress"
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - .npm
-    - /root/cache/Cypress
+    - .cache/Cypress
     - node_modules
 
 stages:
@@ -44,5 +44,5 @@ integrationtest-job:
 unittest-job:
   stage: test
   script:
-    - npm test
+    - npm test || npm install && npm test
   when: always
