@@ -1,21 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
-import { render } from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import configureStore from './configureStore';
+import theApp from './containers/Root';
 
-import { App } from './App';
-import rootReducer from './reducers/rootReducer';
-import * as serviceWorker from './serviceWorker';
+const store = configureStore();
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root'),
-);
-
-serviceWorker.unregister();
+export default class Root extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <theApp />
+      </Provider>
+    );
+  }
+}
