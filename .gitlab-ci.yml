@@ -21,7 +21,7 @@ stages:
 build-job:
   stage: build
   script:
-    - npm ci
+    - npm install --no-save
     - npm run e2e:verify
 
 build-job-from-bottom-if-no-cache:
