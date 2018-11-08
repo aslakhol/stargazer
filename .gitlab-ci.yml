@@ -16,21 +16,18 @@ stages:
 build-job:
   stage: build
   script:
-    - npm install
     - npm run build
     - npm run e2e:verify
 
 unittest-job:
   stage: test
   script:
-    - npm install
     - npm test
   when: always
 
 integrationtest-job:
   stage: test
   script:
-    - npm install
   # start the server in the background
     - npm start --silent &
   # run Cypress test in load balancing mode, pass id to tie jobs together
