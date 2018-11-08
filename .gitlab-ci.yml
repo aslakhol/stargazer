@@ -1,3 +1,5 @@
+image: node:latest
+
 stages:
   - build
   - test
@@ -13,25 +15,14 @@ cache:
     - cache/Cypress
     - node_modules
 
-install:
-  image: cypress/base:10
-  stage: build
-
-  script:
-    - npm ci
-    - $(npm bin)/print-env CI
-    - npm run cy:verify
-
 stages:
   - build
-  - fresh_build
   - test
 
 build-job:
   stage: build
   script:
     - npm ci
-    - $(npm bin)/print-env CI
     - npm run cy:verify
 
 unittest-job:
