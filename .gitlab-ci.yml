@@ -5,6 +5,7 @@ stages:
   - test
 
 variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
 
 cache:
@@ -21,7 +22,7 @@ stages:
 build-job:
   stage: build
   script:
-    - npm install --no-save
+    - npm ci
     - npm run e2e:verify
 
 build-job-from-bottom-if-no-cache:
