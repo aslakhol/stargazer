@@ -1,12 +1,26 @@
-image: cypress/base:10
+stages:
+  - build
+  - test
+
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-  - node_modules/
+    - .npm
+    - cache/Cypress
+    - node_modules
 
-before_script:
-  - npm install
+install:
+  image: cypress/base:10
+  stage: build
+
+  script:
+    - npm ci
+    - $(npm bin)/print-env CI
+    - npm run cy:verify
 
 stages:
   - build
@@ -16,8 +30,9 @@ stages:
 build-job:
   stage: build
   script:
-    - npm run build
-    - npm run e2e:verify
+    - npm ci
+    - $(npm bin)/print-env CI
+    - npm run cy:verify
 
 unittest-job:
   stage: test
