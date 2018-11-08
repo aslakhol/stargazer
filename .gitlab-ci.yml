@@ -24,6 +24,13 @@ build-job:
     - npm ci
     - npm run e2e:verify
 
+build-job-from-bottom-if-no-cache:
+  stage: fresh_build
+  script:
+    - npm install
+    - npm run e2e:verify
+  when: on_failure
+
 integrationtest-job:
   stage: test
   script:
