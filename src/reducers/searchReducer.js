@@ -14,11 +14,13 @@ function newQuery(state = "", action) {
   }
 }
 
-function items(state = {
+
+
+const items = (state = {
   isFetching: false,
   newQuery: "",
   items: [],
-}, action) {
+}, action) => {
   switch (action.type){
     case REQUEST_PERSON:
       return Object.assign({}, state, {
@@ -35,7 +37,9 @@ function items(state = {
   }
 }
 
-function namesByQuery(state = {}, action) {
+
+
+const namesByQuery = (state = {}, action) => {
   switch(action.type) {
     case RECIEVE_PERSON:
     case REQUEST_PERSON:

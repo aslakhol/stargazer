@@ -1,21 +1,24 @@
 import { NEW_QUERY, REQUEST_PERSON, RECIEVE_PERSON } from "../constants/types"
 
+const initialState = {
+  items: [],
+}
 
-function updateQuery(newQuery){
+const updateQuery = (newQuery) => {
   return {
     type: NEW_QUERY,
     newQuery
   };
 }
 
-function requestPerson(newQuery){
+const requestPerson = (newQuery) => {
   return {
     type: REQUEST_PERSON,
     newQuery,
   };
 }
 
-function recievePerson(newQuery, persons){
+const recievePerson = (newQuery, persons) => {
   return {
     type: RECIEVE_PERSON,
     newQuery,
@@ -23,7 +26,7 @@ function recievePerson(newQuery, persons){
   };
 }
 
-function items(array){
+const items  = (array) =>{
   let personArray = [];
   array.forEach((item) => {
     personArray = personArray.concat(item.results);
@@ -39,7 +42,7 @@ function items(array){
   })
 }
 
-function fetchPersons(newQuery){
+const fetchPersons = (newQuery) => {
   const endpoint = [
     `https://swapi.co/api/people?search=${newQuery}`,
   ];
@@ -48,14 +51,14 @@ function fetchPersons(newQuery){
     dispatch(updateQuery(newQuery));
     dispatch(requestPerson(newQuery));
     return (endpoint.map(url => 
-      fetch(url).then(resp => resp.json())
-    ))
+      fetch(url).then(resp => resp.json()),
+    )).then(json => console.log(json))
     .then(array => items(array))
     .then(json => dispatch(recievePerson(newQuery, json)));
   };
 }
 
-function shouldFetch(state, newQuery) {
+const shouldFetch  = (state, newQuery) => {
   const stuff = state.itemsByQuery[newQuery];
   if (!stuff){
     return true;
@@ -65,7 +68,7 @@ function shouldFetch(state, newQuery) {
   return false;
 }
 
-export function fetchItems(newQuery) {
+export const fetchItems = (newQuery) => {
   return(dispatch, getState) => {
     if(shouldFetch(getState(), newQuery)){
       return dispatch(fetchPersons(newQuery));
@@ -73,4 +76,3 @@ export function fetchItems(newQuery) {
     return dispatch(updateQuery(newQuery));
   }
 }
-

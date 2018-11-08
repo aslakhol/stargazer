@@ -3,11 +3,9 @@ import React from 'react';
 
 const Person = props => (
   <li>
-    <h2>
-      {props.item.name}
-    </h2>
+    <h3>{props.items.name}</h3>
     <ul>
-      {props.item.gender}
+      <li> Gender <span> {props.iems.gender} </span></li>
     </ul>
   </li>
 )
