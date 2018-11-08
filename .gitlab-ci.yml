@@ -1,4 +1,4 @@
-image: node:latest
+image: cypress/base:10
 
 stages:
   - build
@@ -24,12 +24,6 @@ build-job:
     - npm ci
     - npm run e2e:verify
 
-unittest-job:
-  stage: test
-  script:
-    - npm test
-  when: always
-
 integrationtest-job:
   stage: test
   script:
@@ -37,4 +31,10 @@ integrationtest-job:
     - npm start --silent &
   # run Cypress test in load balancing mode, pass id to tie jobs together
     - npm run e2e
+  when: always
+
+unittest-job:
+  stage: test
+  script:
+    - npm test
   when: always
