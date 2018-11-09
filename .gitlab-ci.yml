@@ -17,6 +17,7 @@ cache:
 
 stages:
   - build
+  - lint
   - test
 
 build-job:
@@ -31,6 +32,12 @@ build-job-from-bottom-if-no-cache:
     - npm install
     - npm run e2e:verify
   when: on_failure
+
+lint-job:
+  stage: lint
+  script:
+    - npm run lint
+  when: always
 
 integrationtest-job:
   stage: test
