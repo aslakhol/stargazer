@@ -4,21 +4,26 @@ import {
   Container,
   Row,
   Col,
+  Input,
+  InputGroup,
 } from 'reactstrap';
+
 import ModalExample from './components/ModalExample';
-import CardExample from './components/CardExample';
+import PersonCard from './components/PersonCard';
+import './styles/page.css';
 
 export class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toggle = () => this.toggle();
+    this.toggleIsOpen = () => this.toggleIsOpen(); // I don't know about this.
+
     this.state = {
       isOpen: false,
     };
   }
 
-  toggle() {
+  toggleIsOpen() {
     this.setState(prevState => ({
       isOpen: !prevState.isOpen,
     }));
@@ -26,22 +31,17 @@ export class App extends React.Component {
 
   render() {
     return (
+      // Første container, header logo etc. hamburger?
       <div>
-        <Container>
-          <Row>
-            <Col md="3" sm="4" mb="3">
-              <CardExample className="mb-3" />
-            </Col>
-            <Col md="3" sm="4" mb="3">
-              <CardExample />
-            </Col>
+        <Container className="searchContainer">
+          <Row sm="12" md={{ size: 6, offset: 3, height: 12 }}>
+            <InputGroup className="searchStyle">
+              <Input placeholder="search" />
+            </InputGroup>
           </Row>
           <Row>
             <Col md="3" sm="4" mb="3">
-              <CardExample />
-            </Col>
-            <Col md="3" sm="4" mb="3">
-              <CardExample />
+              <PersonCard className="mb-3" />
             </Col>
           </Row>
         </Container>

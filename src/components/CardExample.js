@@ -4,7 +4,6 @@ import {
   CardTitle, CardSubtitle, Button,
 } from 'reactstrap';
 
-
 const CardExample = ({ className }) => (
   <div className={className}>
     <Card>
