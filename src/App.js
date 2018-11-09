@@ -52,7 +52,7 @@ export class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state
+  ...state,
 });
 
 const mapDispatchToProps = dispatch => ({
