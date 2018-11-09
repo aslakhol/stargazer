@@ -7,7 +7,7 @@ import {
 import Picker from '../components/Picker';
 import Persons from '../components/Persons';
 
-class theApp extends Component {
+class TheApp extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -29,6 +29,13 @@ class theApp extends Component {
   handleChange(nextPerson) {
     this.props.dispatch(selectPerson(nextPerson));
     this.props.dispatch(fetchPersonsIfNeeded);
+  }
+
+  handleRefreshClick(e) {
+    e.preventDefault();
+
+    const { dispatch, selectedPerson } = this.props;
+    dispatch(fetchPersonsIfNeeded(selectedPerson));
   }
 
   render() {
@@ -69,8 +76,8 @@ class theApp extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { selectedPerson, personByPersons } = state;
-  const { isFetching, lastUpdated, items: persons } = personByPersons[
+  const { selectedPerson, personsByPerson } = state;
+  const { isFetching, lastUpdated, items: persons } = personsByPerson[
     selectedPerson
   ] || {
     isFetching: true,
@@ -84,4 +91,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(theApp);
+export default connect(mapStateToProps)(TheApp);

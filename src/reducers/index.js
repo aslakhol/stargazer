@@ -32,7 +32,7 @@ const persons = (state = { isFetching: false, items: [] }, action) => {
 };
 
 
-const personByPersons = (state = {}, action) => {
+const personsByPerson = (state = {}, action) => {
   switch (action.type) {
     case RECIEVE_PERSON:
     case REQUEST_PERSON:
@@ -45,7 +45,7 @@ const personByPersons = (state = {}, action) => {
 };
 
 const rootReducer = combineReducers({
-  personByPersons,
+  personsByPerson,
   selectedPerson,
 });
 

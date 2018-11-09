@@ -16,11 +16,13 @@ const requestPerson = person => ({
   person,
 });
 
-const recievePerson = (person, json) => ({
-  type: RECIEVE_PERSON,
-  person: json.data.children.map(child => child.data),
-  recievedAt: Date.now(),
-});
+function recievePerson(person, json) {
+  return {
+    type: RECIEVE_PERSON,
+    person,
+    recievedAt: Date.now(),
+  };
+}
 
 const fetchPersons = person => (dispatch) => {
   dispatch(requestPerson(person));
