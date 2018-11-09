@@ -1,0 +1,48 @@
+image: cypress/base:10
+
+stages:
+  - build
+  - test
+
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/.cache/Cypress"
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .npm
+    - .cache/Cypress
+    - node_modules
+
+stages:
+  - build
+  - test
+
+build-job:
+  stage: build
+  script:
+    - npm ci
+    - npm run e2e:verify
+
+build-job-from-bottom-if-no-cache:
+  stage: build
+  script:
+    - npm install
+    - npm run e2e:verify
+  when: on_failure
+
+integrationtest-job:
+  stage: test
+  script:
+  # start the server in the background
+    - npm start --silent &
+  # run Cypress test in load balancing mode, pass id to tie jobs together
+    - npm run e2e
+  when: always
+
+unittest-job:
+  stage: test
+  script:
+    - npm test || npm install && npm test
+  when: always
