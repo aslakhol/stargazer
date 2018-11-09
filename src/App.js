@@ -34,6 +34,7 @@ export class App extends React.Component {
   }
 
   render() {
+    const { popoverOpen } = this.props;
     return (
       // Første container, header logo etc. hamburger?
       <div>
@@ -42,9 +43,12 @@ export class App extends React.Component {
             <Button id="usBtn" className="Popover1" onClick={this.toggle}>
               About Us
             </Button>
-            <Popover placement="bottom" isOpen={this.state.popoverOpen} target="usBtn" toggle={this.toggle}>
+            <Popover placement="bottom" isOpen={popoverOpen} target="usBtn" toggle={this.toggle}>
               <PopoverHeader>About Us</PopoverHeader>
-              <PopoverBody>Studenter ved NTNU som lager fete applikasjoner i IT2810, også kjent som webdev, også kjent som the informatiker-butcher.</PopoverBody>
+              <PopoverBody>
+                Studenter ved NTNU som lager fete applikasjoner i IT2810,
+                 også kjent som webdev, også kjent som the informatiker-butcher.
+              </PopoverBody>
             </Popover>
           </div>
         </Container>
@@ -73,10 +77,5 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   simpleAction: () => dispatch(),
 });
-
-// CLIPBOARD START
-
-
-// CLIPBOARD END
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
