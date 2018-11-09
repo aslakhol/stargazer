@@ -11,6 +11,7 @@ import {
 import ModalExample from './components/ModalExample';
 import PersonCard from './components/PersonCard';
 import './styles/page.css';
+import PersonCardContainer from './containers/PersonCardContainer';
 
 export class App extends React.Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export class App extends React.Component {
           </Row>
           <Row>
             <Col md="3" sm="4" mb="3">
-              <PersonCard className="mb-3" />
+              <PersonCardContainer className="mb-3" />
             </Col>
           </Row>
         </Container>
