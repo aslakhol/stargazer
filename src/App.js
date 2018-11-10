@@ -3,15 +3,12 @@ import { connect } from 'react-redux';
 import {
   Container,
   Row,
-  Col,
   Input,
   InputGroup,
 } from 'reactstrap';
 
-import ModalExample from './components/ModalExample';
-import PersonCard from './components/PersonCard';
 import './styles/page.css';
-import PersonCardContainer from './containers/PersonCardContainer';
+import SearchPageContainer from './containers/SearchPageContainer';
 
 export class App extends React.Component {
   constructor(props) {
@@ -32,22 +29,16 @@ export class App extends React.Component {
 
   render() {
     return (
-      // Første container, header logo etc. hamburger?
-      <div>
-        <Container className="searchContainer">
-          <Row sm="12" md={{ size: 6, offset: 3, height: 12 }}>
-            <InputGroup className="searchStyle">
-              <Input placeholder="search" />
-            </InputGroup>
-          </Row>
-          <Row>
-            <Col md="3" sm="4" mb="3">
-              <PersonCardContainer className="mb-3" />
-            </Col>
-          </Row>
-        </Container>
-        <ModalExample buttonLabel="hei" />
-      </div>
+      <Container className="searchContainer">
+        <Row sm="12" md={{ size: 6, offset: 3, height: 12 }} className="my-3 mx-0">
+          <InputGroup className="searchStyle">
+            <Input placeholder="search" />
+          </InputGroup>
+        </Row>
+        <Row className="mb-3">
+          <SearchPageContainer />
+        </Row>
+      </Container>
     );
   }
 }
