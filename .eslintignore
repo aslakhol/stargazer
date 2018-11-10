@@ -1,3 +1,4 @@
 /build
 /src/serviceWorker.js
 /cypress
+/src/setupTests.js

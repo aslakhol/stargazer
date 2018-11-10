@@ -34,12 +34,12 @@ const dummyPerson = {
   url: 'https://swapi.co/api/people/1/',
 };
 
-const getImgURL = (person) => { // this should probably be somewhere else with time.
+const getImgURL = () => { // this should probably be somewhere else with time.
   const id = 2;
   return `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = () => ({
   person: dummyPerson,
   imgUrl: getImgURL(dummyPerson),
 });

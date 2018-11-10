@@ -9,7 +9,6 @@ import {
 } from 'reactstrap';
 
 import ModalExample from './components/ModalExample';
-import PersonCard from './components/PersonCard';
 import './styles/page.css';
 import PersonCardContainer from './containers/PersonCardContainer';
 
