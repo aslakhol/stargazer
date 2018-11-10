@@ -5,7 +5,7 @@ export const RECIEVE_PERSON = 'RECIEVE_PERSON';
 export const NEW_QUERY = 'NEW_QUERY';
 
 
-function newnewQuery(query) {
+function newQuery(query) {
   return {
     type: NEW_QUERY,
     query,
@@ -44,14 +44,15 @@ function prepareItems(array) {
 
 function fetchItems(query) {
   const endpoint = [
-    `https://swapi.co/api/people?search=${query}.json`,
+    `https://swapi.co/api/people?search=${query}`,
   ];
   return (dispatch) => {
-    dispatch(newnewQuery(query));
+    dispatch(newQuery(query));
     dispatch(requestPerson(query));
     return Promise.all(endpoint.map(url => fetch(url).then(resp => resp.json())))
       .then(array => prepareItems(array))
-      .then(json => dispatch(recievePerson(query, json)));
+      .then(json => dispatch(recievePerson(query, json)))
+      .then(response => console.log(response));
   };
 }
 
@@ -70,6 +71,6 @@ export function fetchPersonsIfNeeded(query) {
     if (shouldFetch(getState(), query)) {
       return dispatch(fetchItems(query));
     }
-    return dispatch(newnewQuery(query));
+    return dispatch(newQuery(query));
   };
 }

@@ -13,8 +13,8 @@ class TheApp extends Component {
   }
 
   componentDidMount() {
-    const { dispatch, selectedPerson } = this.props;
-    dispatch(fetchPersonsIfNeeded(selectedPerson));
+    const { dispatch, query } = this.props;
+    dispatch(fetchPersonsIfNeeded(query));
   }
 
   handleChange(query) {
