@@ -2,29 +2,29 @@ import { combineReducers } from 'redux';
 import {
   RECIEVE_PERSON,
   REQUEST_PERSON,
-  SELECT_PERSON,
+  NEW_QUERY,
 } from '../actions/actions';
 
-const selectedPerson = (state = 'reactjs', action) => {
+const query = (state = '', action) => {
   switch (action.type) {
-    case SELECT_PERSON:
-      return action.person;
+    case NEW_QUERY:
+      return action.query;
     default:
       return state;
   }
 };
 
-const persons = (state = { isFetching: false, items: [] }, action) => {
+const items = (state = { isFetching: false, query: '', items: [] }, action) => {
   switch (action.type) {
     case REQUEST_PERSON:
       return Object.assign({}, state, {
+        query: action.query,
         isFetching: true,
       });
     case RECIEVE_PERSON:
       return Object.assign({}, state, {
         isFetching: false,
-        items: action.persons,
-        lastUpdated: action.recievedAt,
+        items: action.items,
       });
     default:
       return state;
@@ -32,21 +32,19 @@ const persons = (state = { isFetching: false, items: [] }, action) => {
 };
 
 
-const personsByPerson = (state = {}, action) => {
+const personsByQuery = (state = {}, action) => {
   switch (action.type) {
     case RECIEVE_PERSON:
     case REQUEST_PERSON:
       return Object.assign({}, state, {
-        [action.person]: persons(state[action.person], action),
+        [action.query]: items(state[action.query], action),
       });
     default:
       return state;
   }
 };
 
-const rootReducer = combineReducers({
-  personsByPerson,
-  selectedPerson,
+export default combineReducers({
+  personsByQuery,
+  query,
 });
-
-export default rootReducer;

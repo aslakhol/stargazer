@@ -1,48 +1,75 @@
-import fetch from 'cross-fetch';
+import fetch from 'isomorphic-fetch';
 
 export const REQUEST_PERSON = 'REQUEST_PERSON';
 export const RECIEVE_PERSON = 'RECIEVE_PERSON';
 export const NEW_QUERY = 'NEW_QUERY';
-export const SELECT_PERSON = 'SELECT_PERSON';
 
 
-export const selectPerson = person => ({
-  type: SELECT_PERSON,
-  person,
-});
+function newnewQuery(query) {
+  return {
+    type: NEW_QUERY,
+    query,
+  };
+}
 
-const requestPerson = person => ({
-  type: REQUEST_PERSON,
-  person,
-});
+function requestPerson(query) {
+  return {
+    type: REQUEST_PERSON,
+    query,
+  };
+}
 
-function recievePerson(person, json) {
+function recievePerson(query, items) {
   return {
     type: RECIEVE_PERSON,
-    person,
+    query,
+    items,
     recievedAt: Date.now(),
   };
 }
 
-const fetchPersons = person => (dispatch) => {
-  dispatch(requestPerson(person));
-  return fetch(`https://swapi.co/api/people?search=${person}.json`)
-    .then(response => response.json())
-    .then(json => dispatch(recievePerson(person, json)));
-};
+function prepareItems(array) {
+  let combined = [];
+  array.forEach((item) => {
+    combined = combined.concat(item.results);
+  });
+  return combined.map(item => ({
+    type: 'person',
+    name: item.name,
+    gravity: item.gravity,
+    terrain: item.terrain,
+    population: item.population,
+  }));
+}
 
-const shouldFetch = (state, person) => {
-  const persons = state.personsByPerson[person];
+function fetchItems(query) {
+  const endpoint = [
+    `https://swapi.co/api/people?search=${query}.json`,
+  ];
+  return (dispatch) => {
+    dispatch(newnewQuery(query));
+    dispatch(requestPerson(query));
+    return Promise.all(endpoint.map(url => fetch(url).then(resp => resp.json())))
+      .then(array => prepareItems(array))
+      .then(json => dispatch(recievePerson(query, json)));
+  };
+}
+
+const shouldFetch = (state, query) => {
+  const persons = state.personsByQuery[query];
   if (!persons) {
     return true;
   } if (persons.isFetching) {
     return false;
   }
-  return persons;
+  return false;
 };
 
-export const fetchPersonsIfNeeded = person => (dispatch, getState) => {
-  if (shouldFetch(getState(), person)) {
-    return dispatch(fetchPersons(person));
-  }
-};
+export function fetchPersonsIfNeeded(query) {
+  return (dispatch, getState) => {
+    if (shouldFetch(getState(), query)) {
+      return dispatch(fetchItems(query));
+    }
+    return dispatch(newnewQuery(query));
+  };
+}
