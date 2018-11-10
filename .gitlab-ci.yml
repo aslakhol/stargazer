@@ -4,17 +4,6 @@ stages:
   - build
   - test
 
-variables:
-  npm_config_cache: "$CI_PROJECT_DIR/.npm"
-  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/.cache/Cypress"
-
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - .npm
-    - .cache/Cypress
-    - node_modules
-
 stages:
   - build
   - lint
@@ -36,12 +25,14 @@ build-job-from-bottom-if-no-cache:
 lint-job:
   stage: lint
   script:
+    - npm ci
     - npm run lint
   when: always
 
 integrationtest-job:
   stage: test
   script:
+    - npm ci
   # start the server in the background
     - npm start --silent &
   # run Cypress test in load balancing mode, pass id to tie jobs together
@@ -51,5 +42,6 @@ integrationtest-job:
 unittest-job:
   stage: test
   script:
+    - npm ci
     - npm test || npm install && npm test
   when: always
