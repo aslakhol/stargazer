@@ -35,7 +35,7 @@ const dummyPerson = {
 };
 
 const getImgURL = (person) => { // this should probably be somewhere else with time.
-  const id = 2;
+  const id = person.url.replace('https://swapi.co/api/people/', '').replace('/', '');
   return `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
 };
 
