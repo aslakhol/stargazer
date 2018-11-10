@@ -7,9 +7,9 @@ import {
 } from 'reactstrap';
 
 const PersonCard = (props) => {
-  const { person, className, imgUrl } = props;
+  const { person, imgUrl } = props;
   return (
-    <div className={className}>
+    <div className="mb-3">
       <Card>
         <CardImg top width="100%" src={imgUrl} />
         <CardBody>
