@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> render() renders the component 1`] = `
+<div>
+  <Container
+    className="searchContainer"
+    tag="div"
+  >
+    <Row
+      md={
+        Object {
+          "height": 12,
+          "offset": 3,
+          "size": 6,
+        }
+      }
+      sm="12"
+      tag="div"
+    >
+      <InputGroup
+        className="searchStyle"
+        tag="div"
+      >
+        <Input
+          placeholder="search"
+          type="text"
+        />
+      </InputGroup>
+    </Row>
+    <Row
+      tag="div"
+    >
+      <Col
+        mb="3"
+        md="3"
+        sm="4"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <Connect(PersonCard)
+          className="mb-3"
+        />
+      </Col>
+    </Row>
+  </Container>
+  <ModalExample
+    buttonLabel="hei"
+  />
+</div>
+`;
