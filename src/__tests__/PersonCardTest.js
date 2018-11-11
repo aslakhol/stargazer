@@ -13,7 +13,7 @@ const mockPerson = {
 
 describe('<PersonCard />', () => {
   describe('render()', () => {
-    test('renders the component', () => {
+    it('renders the component', () => {
       const component = shallow(<PersonCard person={mockPerson} />);
 
       expect(toJson(component)).toMatchSnapshot();
