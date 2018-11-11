@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`multiActions clickPersonCard matches snapshot. 1`] = `
+Array [
+  Object {
+    "data": Object {
+      "name": "C-3PO",
+      "url": "https://swapi.co/api/people/2/",
+    },
+    "type": "SET_CURRENT_PERSON",
+  },
+  Object {
+    "type": "OPEN_MODAL",
+  },
+]
+`;
