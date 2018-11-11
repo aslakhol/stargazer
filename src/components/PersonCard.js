@@ -7,9 +7,15 @@ import {
 } from 'reactstrap';
 
 const PersonCard = (props) => {
-  const { person, imgUrl } = props;
+  const {
+    person,
+    imgUrl,
+    onClick,
+  } = props;
+
   return (
-    <div className="mb-3">
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+    <div className="mb-3" onClick={() => onClick(person)} role="button" tabIndex={0}>
       <Card>
         <CardImg top width="100%" src={imgUrl} />
         <CardBody>
