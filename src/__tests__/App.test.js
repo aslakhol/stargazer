@@ -5,7 +5,7 @@ import { App } from '../App';
 
 describe('<App />', () => {
   describe('render()', () => {
-    test('renders the component', () => {
+    it('renders the component', () => {
       const component = shallow(<App />);
 
       expect(toJson(component)).toMatchSnapshot();
