@@ -1,15 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 
-import { App } from './App';
-import rootReducer from './reducers/rootReducer';
 import * as serviceWorker from './serviceWorker';
+import configureStore from './configureStore';
+import { App } from './App';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = configureStore();
 
 render(
   <Provider store={store}>
