@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Person = props => (
-  <h1>
-    {props.items.name}
-  </h1>
+  <h3>
+    {JSON.stringify(props.items)}
+  </h3>
 );
 
 

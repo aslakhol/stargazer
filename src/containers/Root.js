@@ -6,7 +6,8 @@ import TheApp from './TheApp';
 
 const store = configureStore();
 
-export default class Root extends Component {
+// eslint-disable-next-line react/prefer-stateless-function
+class Root extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -15,3 +16,5 @@ export default class Root extends Component {
     );
   }
 }
+
+export default Root;

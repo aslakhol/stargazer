@@ -7,7 +7,7 @@ const Search = (props) => {
     <div>
       <input
         type="text"
-        placeholder="teeext"
+        placeholder="Search for a character!"
         onChange={e => onChange(e.target.value)}
         value={value}
       />

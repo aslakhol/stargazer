@@ -18,29 +18,28 @@ class TheApp extends Component {
   }
 
   handleChange(query) {
-    this.props.dispatch(fetchPersonsIfNeeded(query));
+    const { dispatch } = this.props;
+    dispatch(fetchPersonsIfNeeded(query));
   }
-
 
   render() {
     const {
       query, items, isFetching,
-    } = this.props;
+    } = this.props;
     return (
       <div>
         <header>
-          TITLE
           <Search value={query} onChange={this.handleChange} />
         </header>
         <div>
           {isFetching && items.length === 0
-          && <h2>Loading</h2>}
+            && <h2>Loading</h2>}
 
-          {!isFetching && items.length === 0
-          && <h2>No results</h2> }
+          {!isFetching && items.length <= 0
+            && <h2>No results</h2>}
 
           {items.length > 0
-          && <Person items={items} />
+            && <Person items={items} />
           }
         </div>
       </div>
