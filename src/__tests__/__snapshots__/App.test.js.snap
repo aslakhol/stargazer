@@ -33,5 +33,34 @@ exports[`<App /> render() renders the component 1`] = `
   >
     <Connect(SearchPage) />
   </Row>
+  <Row
+    tag="div"
+  >
+    <Search
+      onChange={[Function]}
+      value=""
+    />
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      md="12"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <h2>
+        No results
+      </h2>
+    </Col>
+  </Row>
 </Container>
 `;
