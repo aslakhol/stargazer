@@ -36,9 +36,14 @@ function prepareItems(array) {
   return combined.map(item => ({
     type: 'person',
     name: item.name,
-    gravity: item.gravity,
-    terrain: item.terrain,
-    population: item.population,
+    height: item.height,
+    mass: item.mass,
+    hair_color: item.hair_color,
+    skin_color: item.skin_color,
+    eye_color: item.eye_color,
+    birth_year: item.birth_year,
+    gender: item.gender,
+    homeworld: item.homeworld,
   }));
 }
 
@@ -51,8 +56,7 @@ function fetchItems(query) {
     dispatch(requestPerson(query));
     return Promise.all(endpoint.map(url => fetch(url).then(resp => resp.json())))
       .then(array => prepareItems(array))
-      .then(json => dispatch(recievePerson(query, json)))
-      .then(response => console.log(response));
+      .then(json => dispatch(recievePerson(query, json)));
   };
 }
 
