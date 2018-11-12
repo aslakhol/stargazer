@@ -4,7 +4,6 @@ export const REQUEST_PERSON = 'REQUEST_PERSON';
 export const RECIEVE_PERSON = 'RECIEVE_PERSON';
 export const NEW_QUERY = 'NEW_QUERY';
 
-
 function newQuery(query) {
   return {
     type: NEW_QUERY,

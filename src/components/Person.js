@@ -6,5 +6,4 @@ const Person = props => (
   </h3>
 );
 
-
 export default Person;

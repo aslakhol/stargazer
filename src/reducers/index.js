@@ -31,7 +31,6 @@ const items = (state = { isFetching: false, query: '', items: [] }, action) => {
   }
 };
 
-
 const personsByQuery = (state = {}, action) => {
   switch (action.type) {
     case RECIEVE_PERSON:
