@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Search = (props) => {
-  const { value, onChange } = props;
+  const { onChange } = props;
 
   return (
     <div>
@@ -9,9 +9,7 @@ const Search = (props) => {
         type="text"
         placeholder="Search for a character!"
         onChange={e => onChange(e.target.value)}
-        value={value}
       />
-
     </div>
   );
 };
