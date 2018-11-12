@@ -1,0 +1,47 @@
+image: cypress/base:10
+
+stages:
+  - build
+  - test
+
+stages:
+  - build
+  - lint
+  - test
+
+build-job:
+  stage: build
+  script:
+    - npm ci
+    - npm run e2e:verify
+
+build-job-from-bottom-if-no-cache:
+  stage: build
+  script:
+    - npm install
+    - npm run e2e:verify
+  when: on_failure
+
+lint-job:
+  stage: lint
+  script:
+    - npm ci
+    - npm run lint
+  when: always
+
+integrationtest-job:
+  stage: test
+  script:
+    - npm ci
+  # start the server in the background
+    - npm start --silent &
+  # run Cypress test in load balancing mode, pass id to tie jobs together
+    - npm run e2e
+  when: always
+
+unittest-job:
+  stage: test
+  script:
+    - npm ci
+    - npm test || npm install && npm test
+  when: always

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modalReducer CLOSE_MODAL returns the correct state 1`] = `false`;
+
+exports[`modalReducer OPEN_MODAL returns the correct state 1`] = `true`;

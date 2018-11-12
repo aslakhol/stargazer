@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PersonCard /> render() renders the component 1`] = `
+<div
+  className="mb-3"
+  onClick={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <Card
+    tag="div"
+  >
+    <CardImg
+      tag="img"
+      top={true}
+      width="100%"
+    />
+    <CardBody
+      tag="div"
+    >
+      <CardTitle
+        tag="h5"
+      >
+        C-3PO
+      </CardTitle>
+    </CardBody>
+  </Card>
+</div>
+`;
