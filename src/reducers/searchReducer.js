@@ -13,30 +13,21 @@ export const query = (state = '', action) => {
   }
 };
 
-const items = (state = { isFetching: false, query: '', items: [] }, action) => {
+export const personsByQuery = (state = { isFetching: false, query: '', persons: [] }, action) => {
   switch (action.type) {
     case REQUEST_PERSON:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         query: action.query,
         isFetching: true,
-      });
+      };
     case RECIEVE_PERSON:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isFetching: false,
-        items: action.items,
-      });
-    default:
-      return state;
-  }
-};
-
-export const personsByQuery = (state = {}, action) => {
-  switch (action.type) {
-    case RECIEVE_PERSON:
-    case REQUEST_PERSON:
-      return Object.assign({}, state, {
-        [action.query]: items(state[action.query], action),
-      });
+        query: action.query,
+        persons: action.items,
+      };
     default:
       return state;
   }
