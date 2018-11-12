@@ -1,11 +1,10 @@
-import { combineReducers } from 'redux';
 import {
   RECIEVE_PERSON,
   REQUEST_PERSON,
   NEW_QUERY,
 } from '../actions/actions';
 
-const query = (state = '', action) => {
+export const query = (state = '', action) => {
   switch (action.type) {
     case NEW_QUERY:
       return action.query;
@@ -31,7 +30,7 @@ const items = (state = { isFetching: false, query: '', items: [] }, action) => {
   }
 };
 
-const personsByQuery = (state = {}, action) => {
+export const personsByQuery = (state = {}, action) => {
   switch (action.type) {
     case RECIEVE_PERSON:
     case REQUEST_PERSON:
@@ -42,8 +41,3 @@ const personsByQuery = (state = {}, action) => {
       return state;
   }
 };
-
-export default combineReducers({
-  personsByQuery,
-  query,
-});
