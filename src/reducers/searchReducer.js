@@ -2,19 +2,17 @@ import {
   RECIEVE_PERSON,
   REQUEST_PERSON,
   NEW_QUERY,
-} from '../actions/actions';
+} from '../actions/types';
 
-export const query = (state = '', action) => {
+const initialState = { isFetching: false, query: '', result: [] };
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case NEW_QUERY:
-      return action.query;
-    default:
-      return state;
-  }
-};
-
-export const personsByQuery = (state = { isFetching: false, query: '', persons: [] }, action) => {
-  switch (action.type) {
+      return {
+        ...state,
+        query: action.query,
+      };
     case REQUEST_PERSON:
       return {
         ...state,
@@ -26,7 +24,7 @@ export const personsByQuery = (state = { isFetching: false, query: '', persons: 
         ...state,
         isFetching: false,
         query: action.query,
-        persons: action.items,
+        result: action.response,
       };
     default:
       return state;
