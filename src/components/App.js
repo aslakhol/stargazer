@@ -10,6 +10,7 @@ import Search from './Search';
 import Person from './Person';
 
 import SearchPageContainer from '../containers/SearchPageContainer';
+import SearchHistory from './SearchHistory';
 
 class App extends React.Component {
   constructor(props) {
@@ -58,6 +59,7 @@ class App extends React.Component {
             }
           </Col>
         </Row>
+        <SearchHistory />
       </Container>
     );
   }
