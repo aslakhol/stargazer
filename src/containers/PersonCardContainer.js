@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import PersonCard from '../components/PersonCard';
-import { clickPersonCard } from '../actions/multiActions';
+import { clickPersonCard, pressEnterPersonCard } from '../actions/multiActions';
 
 // this should probably be somewhere else with time.
 const getImgURL = (person) => {
@@ -15,6 +15,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   onClick: data => dispatch(clickPersonCard(data)),
+  handleKeyPress: (event, data) => dispatch(pressEnterPersonCard(event, data)),
 });
 
 const PersonCardContainer = connect(
