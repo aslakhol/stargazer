@@ -11,11 +11,11 @@ const PersonCard = (props) => {
     person,
     imgUrl,
     onClick,
+    handleKeyPress,
   } = props;
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <div className="mb-3" onClick={() => onClick(person)} role="button" tabIndex={0}>
+    <div className="mb-3" onClick={() => onClick(person)} role="button" tabIndex={0} onKeyPress={e => handleKeyPress(e, person)}>
       <Card>
         <CardImg top width="100%" src={imgUrl} />
         <CardBody>
