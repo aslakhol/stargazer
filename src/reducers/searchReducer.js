@@ -4,7 +4,13 @@ import {
   NEW_QUERY,
 } from '../actions/types';
 
-const initialState = { isFetching: false, query: '', result: [] };
+const initialState = {
+  isFetching: false,
+  query: '',
+  requestedAt: 0,
+  receivedAt: 0,
+  result: [],
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -18,6 +24,7 @@ export default (state = initialState, action) => {
         ...state,
         query: action.query,
         isFetching: true,
+        requestedAt: action.requestedAt,
       };
     case RECIEVE_PERSON:
       return {
@@ -25,6 +32,7 @@ export default (state = initialState, action) => {
         isFetching: false,
         query: action.query,
         result: action.response,
+        receivedAt: action.receivedAt,
       };
     default:
       return state;
