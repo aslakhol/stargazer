@@ -7,7 +7,9 @@ export const clickPersonCard = data => (dispatch) => {
 };
 
 export const pressEnterPersonCard = (event, person) => (dispatch) => {
-  if (event.which === 13) {
+  const KEY_ENTER = 13;
+  const KEY_SPACE = 32;
+  if (event.which === KEY_ENTER || event.which === KEY_SPACE) {
     dispatch(clickPersonCard(person));
   }
 };
