@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 
 import SearchHistory from '../components/SearchHistory';
+import { fetchHistory } from '../actions/searchHistoryAction';
 
-const mapStateToProps = () => ({
-
+const mapStateToProps = state => ({
+  queries: state.request.result,
 });
 
-const mapDispatchToProps = () => ({
-
+const mapDispatchToProps = dispatch => ({
+  onHistoryButtonClick: () => dispatch(fetchHistory()),
 });
 
 const SearchHistoryContainer = connect(
