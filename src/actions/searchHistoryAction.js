@@ -4,11 +4,6 @@ import {
 } from '../constants';
 
 
-export const requestHistory = search_string => ({
-  type: REQUEST_HISTORY,
-  payload: { search_string },
-});
-
 export const fetchHistory = (dispatch) => {
   const historyUrl = `${API_ENDPOINT}search`;
   fetch(historyUrl)
@@ -20,3 +15,8 @@ export const fetchHistory = (dispatch) => {
     })
     .catch(error => console.log(error));
 };
+
+export const requestHistory = search_string => ({
+  type: REQUEST_HISTORY,
+  payload: { search_string },
+});
