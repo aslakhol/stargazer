@@ -1,19 +1,18 @@
 import { connect } from 'react-redux';
-import App from '../components/App';
+
+import SearchBar from '../components/SearchBar';
 import { fetchPersonsIfNeeded } from '../actions/searchActions';
 
 const mapStateToProps = state => ({
-  query: state.request.query,
   persons: state.request.result,
-  isFetching: state.request.isFetching,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchPersonsIfNeeded: data => dispatch(fetchPersonsIfNeeded(data)),
+  onChange: data => dispatch(fetchPersonsIfNeeded(data)),
 });
 
-const AppContainer = connect(
+const SearchBarContainer = connect(
   mapStateToProps, mapDispatchToProps,
-)(App);
+)(SearchBar);
 
-export default AppContainer;
+export default SearchBarContainer;

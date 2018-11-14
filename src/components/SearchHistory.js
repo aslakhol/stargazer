@@ -13,17 +13,6 @@ class SearchHistory extends Component {
     };
   }
 
-  componentDidMount() {
-    const url = 'http://it2810-06.idi.ntnu.no/api/api/search';
-    fetch(url)
-      .then(response => response.json())
-      .then((d) => {
-        this.setState({ searches: d });
-        console.log('state', this.state.searches);
-      })
-      .catch(error => console.log(error));
-  }
-
   toggle() {
     this.setState({ collapse: !this.state.collapse });
   }

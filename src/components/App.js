@@ -1,15 +1,11 @@
 import React from 'react';
 import {
   Container,
-  Col,
   Row,
-  Input,
-  InputGroup,
 } from 'reactstrap';
-import Search from './Search';
-import Person from './Person';
 
 import SearchPageContainer from '../containers/SearchPageContainer';
+<<<<<<< HEAD
 import SearchHistory from './SearchHistory';
 
 class App extends React.Component {
@@ -63,6 +59,21 @@ class App extends React.Component {
       </Container>
     );
   }
+=======
+import SearchBarContainer from '../containers/SearchBarContainer';
+
+function App() {
+  return (
+    <Container>
+      <Row className="my-3 mx-0">
+        <SearchBarContainer />
+      </Row>
+      <Row className="mb-3">
+        <SearchPageContainer />
+      </Row>
+    </Container>
+  );
+>>>>>>> 028c6ff647267a97c187e0a7167ac624cfa83323
 }
 
 export default App;

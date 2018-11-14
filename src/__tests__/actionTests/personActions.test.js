@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 
 import * as personActions from '../../actions/personActions';
-import { SET_CURRENT_PERSON } from '../../actions/types';
+import { SET_CURRENT_PERSON } from '../../constants';
 
 const mockStore = configureStore();
 const store = mockStore();

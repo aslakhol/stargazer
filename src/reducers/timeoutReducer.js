@@ -1,4 +1,4 @@
-import { NEW_TIMEOUT } from '../actions/types';
+import { NEW_TIMEOUT } from '../constants';
 
 const initialState = -1;
 
