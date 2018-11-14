@@ -5,12 +5,12 @@ import {
 
 const SearchHistory = (props) => {
   const {
-    history,
+    onClickButton,
   } = props;
 
   return (
     <div>
-      <Button>HISTORY</Button>
+      <Button onClick={() => onClickButton()}>HISTORY</Button>
     </div>
   );
 };
