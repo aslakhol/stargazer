@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col } from 'reactstrap';
+
 import PersonCardContainer from '../containers/PersonCardContainer';
 
 const SearchPage = (props) => {
