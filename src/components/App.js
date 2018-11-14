@@ -6,10 +6,14 @@ import {
 
 import SearchPageContainer from '../containers/SearchPageContainer';
 import SearchBarContainer from '../containers/SearchBarContainer';
+import FilterButtonsContainer from '../containers/FilterButtonsContainer';
 
 function App() {
   return (
     <Container>
+      <Row className="mt-3 mx-0">
+        <FilterButtonsContainer />
+      </Row>
       <Row className="my-3 mx-0">
         <SearchBarContainer />
       </Row>
