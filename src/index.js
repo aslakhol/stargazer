@@ -5,13 +5,13 @@ import { Provider } from 'react-redux';
 
 import * as serviceWorker from './serviceWorker';
 import configureStore from './configureStore';
-import AppContainer from './containers/AppContainer';
+import App from './components/App';
 
 const store = configureStore();
 
 render(
   <Provider store={store}>
-    <AppContainer />
+    <App />
   </Provider>,
   document.getElementById('root'),
 );

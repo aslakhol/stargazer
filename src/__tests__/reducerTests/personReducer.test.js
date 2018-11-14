@@ -1,5 +1,5 @@
 import personReducer from '../../reducers/personReducer';
-import { SET_CURRENT_PERSON } from '../../actions/types';
+import { SET_CURRENT_PERSON } from '../../constants';
 
 const mockPerson = {
   name: 'C-3PO',
