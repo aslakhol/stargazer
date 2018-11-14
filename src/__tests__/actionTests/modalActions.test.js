@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 
 import * as modalActions from '../../actions/modalActions';
-import { OPEN_MODAL, CLOSE_MODAL } from '../../constants';
+import { OPEN_MODAL, CLOSE_MODAL } from '../../utils/constants';
 
 const mockStore = configureStore();
 const store = mockStore();

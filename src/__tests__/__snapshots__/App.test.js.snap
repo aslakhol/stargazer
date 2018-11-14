@@ -5,6 +5,12 @@ exports[`<App /> render() renders the component 1`] = `
   tag="div"
 >
   <Row
+    className="mt-3 mx-0"
+    tag="div"
+  >
+    <Connect(FilterButtons) />
+  </Row>
+  <Row
     className="my-3 mx-0"
     tag="div"
   >
