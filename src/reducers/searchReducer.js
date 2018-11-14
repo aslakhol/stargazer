@@ -2,7 +2,7 @@ import {
   RECIEVE_PERSON,
   REQUEST_PERSON,
   NEW_QUERY,
-} from '../constants';
+} from '../utils/constants';
 
 const initialState = {
   isFetching: false,
