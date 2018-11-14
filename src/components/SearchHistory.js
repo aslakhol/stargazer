@@ -1,39 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Collapse, Button, ListGroupItem, ListGroup,
 } from 'reactstrap';
 
-class SearchHistory extends Component {
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      searches: [],
-      collapse: false,
-    };
-  }
+const SearchHistory = (props) => {
+  const {
+    history,
+  } = props;
 
-  toggle() {
-    this.setState({ collapse: !this.state.collapse });
-  }
-
-  render() {
-    return (
-      <div>
-        <Button onClick={this.toggle}>HISTORY</Button>
-        <Collapse isOpen={this.state.collapse}>
-          <ListGroup>
-            {this.state.searches.map((search, id) => (
-              <ListGroupItem key={`${search.search_string}${id}`}>
-                {search.search_string}
-              </ListGroupItem>
-            ))}
-          </ListGroup>
-        </Collapse>
-      </div>
-    );
-  }
-}
-
+  return (
+    <div>
+      <Button>HISTORY</Button>
+    </div>
+  );
+};
 
 export default SearchHistory;
