@@ -16,8 +16,7 @@ export const NEW_TIMEOUT = 'NEW_TIMEOUT';
 
 /* ----  API constants ---- */
 export const API_TIMEOUT_DURATION = 500;
-export const API_ENDPOINT = 'https://swapi.co/api/';
-// export const API_ENDPOINT = 'http://it2810-06.idi.ntnu.no/api/api/';
-
+export const API_ENDPOINT = 'http://it2810-06.idi.ntnu.no/api/api/';
+export const IMG_URL_BASE = 'https://starwars-visualguide.com/assets/img/characters/';
 
 /* ----  API constants end ---- */
