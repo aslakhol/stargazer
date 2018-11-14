@@ -6,27 +6,33 @@ import {
 class SearchHistory extends Component {
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = { collapse: false };
+    this.state = {
+      searches: [],
+    };
   }
 
-  toggle() {
-    this.setState({ collapse: !this.state.collapse });
+  componentDidMount() {
+    const url = 'http://it2810-06.idi.ntnu.no/api/api/search';
+    fetch(url)
+      .then(response => response.json())
+      .then((d) => {
+        this.setState({ searches: d });
+        console.log('state', this.state.searches);
+      })
+      .catch(error => console.log(error));
   }
 
   render() {
     return (
       <div>
-        <Button color="primary" onClick={this.toggle}> History </Button>
-        <Collapse isOpen={this.state.collapse}>
-          <ListGroup>
-            <ListGroupItem>Cras justo odio</ListGroupItem>
-            <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-            <ListGroupItem>Morbi leo risus</ListGroupItem>
-            <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
-            <ListGroupItem>Vestibulum at eros</ListGroupItem>
-          </ListGroup>
-        </Collapse>
+        <Button onClick={this.toggle}>HISTORY</Button>
+        <ListGroup>
+          {this.state.searches.map((search, id) => (
+            <ListGroupItem key={`${search.search_string}${id}`}>
+              {search.search_string}
+            </ListGroupItem>
+          ))}
+        </ListGroup>
       </div>
     );
   }
