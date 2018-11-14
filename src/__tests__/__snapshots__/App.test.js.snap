@@ -2,65 +2,19 @@
 
 exports[`<App /> render() renders the component 1`] = `
 <Container
-  className="searchContainer"
   tag="div"
 >
   <Row
     className="my-3 mx-0"
-    md={
-      Object {
-        "height": 12,
-        "offset": 3,
-        "size": 6,
-      }
-    }
-    sm="12"
     tag="div"
   >
-    <InputGroup
-      className="searchStyle"
-      tag="div"
-    >
-      <Input
-        placeholder="search"
-        type="text"
-      />
-    </InputGroup>
+    <Connect(SearchBar) />
   </Row>
   <Row
     className="mb-3"
     tag="div"
   >
     <Connect(SearchPage) />
-  </Row>
-  <Row
-    tag="div"
-  >
-    <Search
-      onChange={[Function]}
-      value=""
-    />
-  </Row>
-  <Row
-    tag="div"
-  >
-    <Col
-      md="12"
-      tag="div"
-      widths={
-        Array [
-          "xs",
-          "sm",
-          "md",
-          "lg",
-          "xl",
-        ]
-      }
-    >
-      <h2>
-        No results
-      </h2>
-    </Col>
   </Row>
 </Container>
 `;
