@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
 import PersonCard from '../components/PersonCard';
 import { clickPersonCard } from '../actions/multiActions';
+import { IMG_URL_BASE } from '../constants';
 
-// this should probably be somewhere else with time.
-const getImgURL = (person) => {
-  return `https://starwars-visualguide.com/assets/img/characters/${person.id}.jpg`;
-};
+const getImgURL = person => `${IMG_URL_BASE}${person.id}.jpg`;
 
 const mapStateToProps = (state, ownProps) => ({
   person: ownProps.person,
