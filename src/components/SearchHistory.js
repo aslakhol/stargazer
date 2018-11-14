@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Collapse, Button, ListGroupItem, ListGroup,
+  Button,
 } from 'reactstrap';
 
 const SearchHistory = (props) => {
