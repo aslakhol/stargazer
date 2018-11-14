@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
 import personReducer from './personReducer';
 import modalReducer from './modalReducer';
-import { personsByQuery, query } from './searchReducer';
+import searchReducer from './searchReducer';
+import timeoutReducer from './timeoutReducer';
 
 export default combineReducers({
   currentPerson: personReducer,
   modalOpen: modalReducer,
-  personsByQuery,
-  query,
+  request: searchReducer,
+  timeout: timeoutReducer,
 });
