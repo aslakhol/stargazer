@@ -1,9 +1,14 @@
 import { setCurrentPerson } from './personActions';
 import { setModalOpen } from './modalActions';
+import { showHistory } from './historyButtonAction';
 
 export const clickPersonCard = data => (dispatch) => {
   dispatch(setCurrentPerson(data));
   dispatch(setModalOpen());
+};
+
+export const clickHistoryButton = () => (dispatch) => {
+  dispatch(showHistory());
 };
 
 export const pressEnterPersonCard = (event, person) => (dispatch) => {
