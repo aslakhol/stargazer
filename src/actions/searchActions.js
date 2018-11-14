@@ -3,9 +3,9 @@ import {
   REQUEST_PERSON,
   RECIEVE_PERSON,
   NEW_TIMEOUT,
-  API_ENDPOINT,
   API_TIMEOUT_DURATION,
-} from '../constants';
+} from '../utils/constants';
+import { createSearchQueryString } from '../utils/urlUtil';
 
 export const makeQuery = query => ({ type: NEW_QUERY, query });
 export const requestPerson = query => ({
