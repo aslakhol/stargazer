@@ -7,27 +7,30 @@ import {
 } from '../utils/constants';
 import { createSearchQueryString } from '../utils/urlUtil';
 
-export const makeQuery = query => ({ type: NEW_QUERY, query });
-export const requestPerson = query => ({
+export const makeQuery = (query, searchTerm) => ({ type: NEW_QUERY, query, searchTerm });
+export const requestPerson = (query, searchTerm) => ({
   type: REQUEST_PERSON,
   query,
+  searchTerm,
   requestedAt: Date.now(),
 });
-export const recievePerson = (query, response) => ({
+export const recievePerson = (query, searchTerm, response = []) => ({
   type: RECIEVE_PERSON,
   query,
+  searchTerm,
   response,
   recievedAt: Date.now(),
 });
 export const storeTimeout = timeout => ({ type: NEW_TIMEOUT, timeout });
 
-const fetchPersons = query => (dispatch) => {
-  const queryString = `${API_ENDPOINT}people?search=${query}`;
-  dispatch(makeQuery(query));
-  dispatch(requestPerson(query));
+const fetchPersons = searchTerm => (dispatch, getState) => {
+  const { filter } = getState();
+  const queryString = createSearchQueryString(searchTerm, filter);
+  dispatch(makeQuery(queryString, searchTerm));
+  dispatch(requestPerson(queryString, searchTerm));
   fetch(queryString)
     .then(response => response.json())
-    .then(json => dispatch(recievePerson(query, json)));
+    .then(json => dispatch(recievePerson(queryString, searchTerm, json.rows)));
 };
 
 export const fetchPersonsIfNeeded = query => (dispatch, getState) => {
