@@ -4,8 +4,7 @@ import { clickPersonCard } from '../actions/multiActions';
 
 // this should probably be somewhere else with time.
 const getImgURL = (person) => {
-  const id = person.url.replace('https://swapi.co/api/people/', '').replace('/', '');
-  return `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
+  return `https://starwars-visualguide.com/assets/img/characters/${person.id}.jpg`;
 };
 
 const mapStateToProps = (state, ownProps) => ({
