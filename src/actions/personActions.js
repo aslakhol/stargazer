@@ -1,4 +1,4 @@
-import { SET_CURRENT_PERSON } from './types';
+import { SET_CURRENT_PERSON } from '../constants';
 
 export const setCurrentPerson = data => ({ type: SET_CURRENT_PERSON, data });
 

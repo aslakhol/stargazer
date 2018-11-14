@@ -3,7 +3,9 @@ import {
   REQUEST_PERSON,
   RECIEVE_PERSON,
   NEW_TIMEOUT,
-} from './types';
+  API_ENDPOINT,
+  API_TIMEOUT_DURATION,
+} from '../constants';
 
 export const makeQuery = query => ({ type: NEW_QUERY, query });
 export const requestPerson = query => ({
@@ -20,17 +22,16 @@ export const recievePerson = (query, response) => ({
 export const storeTimeout = timeout => ({ type: NEW_TIMEOUT, timeout });
 
 const fetchPersons = query => (dispatch) => {
-  const endpoint = `https://swapi.co/api/people?search=${query}`;
+  const queryString = `${API_ENDPOINT}people?search=${query}`;
   dispatch(makeQuery(query));
   dispatch(requestPerson(query));
-  fetch(endpoint)
+  fetch(queryString)
     .then(response => response.json())
     .then(json => dispatch(recievePerson(query, json.results)));
 };
 
 export const fetchPersonsIfNeeded = query => (dispatch, getState) => {
   clearTimeout(getState().timeout);
-  const requestTimeoutInMs = 500;
-  const timeout = setTimeout(() => { dispatch(fetchPersons(query)); }, requestTimeoutInMs);
+  const timeout = setTimeout(() => { dispatch(fetchPersons(query)); }, API_TIMEOUT_DURATION);
   dispatch(storeTimeout(timeout));
 };

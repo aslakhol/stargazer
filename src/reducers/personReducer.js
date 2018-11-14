@@ -1,4 +1,4 @@
-import { SET_CURRENT_PERSON } from '../actions/types';
+import { SET_CURRENT_PERSON } from '../constants';
 
 const initialState = {};
 
