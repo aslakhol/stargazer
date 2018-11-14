@@ -1,18 +1,32 @@
 import {
-  REQUEST_HISTORY,
+  REQUEST_HISTORY, SHOW_HISTORY, HIDE_HISTORY,
 } from '../constants';
 
 const initialState = {
-  history: [],
+  queries: [],
+  isOpen: false,
 };
 
-const searchHistoryReducer = (state = initialState, action) => {
+const historyReducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_HISTORY:
       return {
-        history: action.payload,
+        ...state,
+        queries: action.payload,
+      };
+    case SHOW_HISTORY:
+      return {
+        ...state,
+        isOpen: true,
+      };
+    case HIDE_HISTORY:
+      return {
+        ...state,
+        isOpen: false,
       };
     default:
       return state;
   }
 };
+
+export default historyReducer;
