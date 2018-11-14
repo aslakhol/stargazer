@@ -1,14 +1,18 @@
 import { setCurrentPerson } from './personActions';
 import { setModalOpen } from './modalActions';
-import { showHistory } from './historyButtonAction';
+import { showHistory, hideHistory } from './historyButtonAction';
 
 export const clickPersonCard = data => (dispatch) => {
   dispatch(setCurrentPerson(data));
   dispatch(setModalOpen());
 };
 
-export const clickHistoryButton = () => (dispatch) => {
-  dispatch(showHistory());
+export const clickHistoryButton = () => (dispatch, getState) => {
+  if (!getState().history.isOpen) {
+    dispatch(showHistory());
+  } else {
+    dispatch(hideHistory());
+  }
 };
 
 export const pressEnterPersonCard = (event, person) => (dispatch) => {
