@@ -4,8 +4,10 @@ import {
   CardImg,
   CardBody,
   CardTitle,
+  Table,
 } from 'reactstrap';
 
+<<<<<<< Updated upstream
 const dummyData = [ // This is temp
   {
     name: 'Luke Skywalker',
@@ -45,6 +47,21 @@ const PersonCard = (props) => {
   const { className } = props;
   return (
     <div className={className}>
+=======
+const PersonCard = (props) => {
+  const {
+    person,
+    imgUrl,
+    cardCondition,
+  } = props;
+
+  return cardCondition.showImg ? ( //TODO: Dersom url ikke eksisterer - exception -> default photo silhouette - Male/Female
+    <div className="mb-4" >
+      <img top width="106%" src={imgUrl} />
+    </div>
+  ) : cardCondition.showName ? ( 
+    <div className="mb-4" >
+>>>>>>> Stashed changes
       <Card>
         <CardImg top width="100%" src="https://vignette.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg/revision/latest/scale-to-width-down/500?cb=20170927034529" />
         <CardBody>
@@ -52,7 +69,42 @@ const PersonCard = (props) => {
         </CardBody>
       </Card>
     </div>
-  );
+  ) : cardCondition.showInfo ? (
+      <div className="mb-4">
+            <Table dark>
+            <tbody>
+              <tr>
+                <th scope="row">Height</th>
+                <td>{person.height}</td>
+              </tr>
+              <tr>
+                <th scope="row">Mass</th>
+                <td>{person.mass}</td>
+              </tr>
+              <tr>
+                <th scope="row">Hair Color</th>
+                <td>{person.hair_color}</td>
+              </tr>
+              <tr>
+                <th scope="row">Skin Color</th>
+                <td>{person.skin_color}</td>
+              </tr>
+              <tr>
+                <th scope="row">Eye Color</th>
+                <td>{person.eye_color}</td>
+              </tr>
+              <tr>
+                <th scope="row">Birth Year</th>
+                <td>{person.birth_year}</td>
+              </tr>
+              <tr>
+                <th scope="row">Gender</th>
+                <td>{person.gender}</td>
+              </tr>
+            </tbody>
+          </Table>
+      </div>
+  ) : null;
 };
 
 export default PersonCard;

@@ -42,7 +42,7 @@ class PersonModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: true
+      modal: true,
     };
 
     this.toggle = this.toggle.bind(this);
@@ -57,28 +57,19 @@ class PersonModal extends React.Component {
   render() {
     return (
       <div>
-        <Modal className='modalStyle' isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} class='modal-lg'>
-          <ModalBody>
-            {dummyData.map(person => <ModalHeader> {person.name}</ModalHeader>)}
-            <div>
-              <Row>
-                <Col md='6'>
-                  <PersonCard></PersonCard>
-                </Col>
-                <Col md='6'>
-                  <PersonCard />
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <h2>second one</h2>
-                </Col>
-                <Col>
-                </Col>
-              </Row>
-            </div>
-          </ModalBody>
-          <ModalFooter> Footer is Nothing So Far - close here?  </ModalFooter>
+        <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalHeader toggle={this.toggle}> {dummyPerson.name} </ModalHeader>
+          <Row>
+            <Col md="6" sm="6">
+              <PersonCardContainer person={dummyPerson} cardCondition={{ showImg: true, showName: false, showInfo: false }} />
+            </Col>
+            <Col md="6" sm="6">
+              <PersonCardContainer person={dummyPerson} cardCondition={{ showImg: false, showName: false, showInfo: true }} />
+            </Col>
+            <Col md="6" sm="6">
+            </Col>
+          </Row>
         </Modal>
       </div>
     );
