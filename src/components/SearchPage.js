@@ -7,7 +7,7 @@ const SearchPage = (props) => {
   const { persons } = props;
   return (
     persons.map(person => (
-      <Col md="3" sm="6" key={person.url}>
+      <Col md="3" sm="6" key={person.id}>
         <PersonCardContainer person={person} className={person.name} />
       </Col>
     ))

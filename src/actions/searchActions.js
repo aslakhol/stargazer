@@ -27,7 +27,7 @@ const fetchPersons = query => (dispatch) => {
   dispatch(requestPerson(query));
   fetch(queryString)
     .then(response => response.json())
-    .then(json => dispatch(recievePerson(query, json.results)));
+    .then(json => dispatch(recievePerson(query, json)));
 };
 
 export const fetchPersonsIfNeeded = query => (dispatch, getState) => {

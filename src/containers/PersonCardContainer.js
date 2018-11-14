@@ -1,12 +1,9 @@
 import { connect } from 'react-redux';
 import PersonCard from '../components/PersonCard';
 import { clickPersonCard, pressEnterPersonCard } from '../actions/multiActions';
+import { IMG_URL_BASE } from '../constants';
 
-// this should probably be somewhere else with time.
-const getImgURL = (person) => {
-  const id = person.url.replace('https://swapi.co/api/people/', '').replace('/', '');
-  return `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
-};
+const getImgURL = person => `${IMG_URL_BASE}${person.id}.jpg`;
 
 const mapStateToProps = (state, ownProps) => ({
   person: ownProps.person,
