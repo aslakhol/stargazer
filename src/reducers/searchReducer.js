@@ -7,6 +7,7 @@ import {
 const initialState = {
   isFetching: false,
   query: '',
+  searchTerm: '',
   requestedAt: 0,
   receivedAt: 0,
   result: [],
