@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import App from '../components/App';
-import { fetchPersonsIfNeeded } from '../actions/actions';
+import { fetchPersonsIfNeeded } from '../actions/searchActions';
 
 const mapStateToProps = state => ({
-  query: state.personsByQuery.query,
-  persons: state.personsByQuery.persons,
-  isFetching: state.personsByQuery.isFetching,
+  query: state.request.query,
+  persons: state.request.result,
+  isFetching: state.request.isFetching,
 });
 
 const mapDispatchToProps = dispatch => ({

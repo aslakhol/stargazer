@@ -4,6 +4,7 @@ exports[`<PersonCard /> render() renders the component 1`] = `
 <div
   className="mb-3"
   onClick={[Function]}
+  onKeyPress={[Function]}
   role="button"
   tabIndex={0}
 >
