@@ -10,6 +10,7 @@ const initialState = {
   searchTerm: '',
   requestedAt: 0,
   receivedAt: 0,
+  count: 0,
   result: [],
 };
 
@@ -35,6 +36,7 @@ export default (state = initialState, action) => {
         isFetching: false,
         query: action.query,
         searchTerm: action.searchTerm,
+        count: action.count,
         result: action.response,
         receivedAt: action.receivedAt,
       };
