@@ -9,12 +9,12 @@ const renderPersonInfo = (props) => {
   } = props;
 
   return (
-    <div className="mb-4">
-      <Table dark>
+    <div className="mb-3">
+      <Table>
         <tbody>
           <tr>
-            <th scope="row">Height</th>
-            <td>{person.height}</td>
+            <th className="border-0" scope="row">Height</th>
+            <td className="border-0">{person.height}</td>
           </tr>
           <tr>
             <th scope="row">Mass</th>
@@ -27,10 +27,6 @@ const renderPersonInfo = (props) => {
           <tr>
             <th scope="row">Skin Color</th>
             <td>{person.skin_color}</td>
-          </tr>
-          <tr>
-            <th scope="row">Eye Color</th>
-            <td>{person.eye_color}</td>
           </tr>
           <tr>
             <th scope="row">Birth Year</th>
