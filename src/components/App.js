@@ -8,6 +8,7 @@ import SearchPageContainer from '../containers/SearchPageContainer';
 import SearchBarContainer from '../containers/SearchBarContainer';
 import FilterButtonsContainer from '../containers/FilterButtonsContainer';
 import ModalContainer from '../containers/ModalContainer';
+import PageSelectContainer from '../containers/PageSelectContainer';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
       </Row>
       <Row className="mb-3">
         <SearchPageContainer />
+      </Row>
+      <Row>
+        <PageSelectContainer />
       </Row>
       <ModalContainer />
     </Container>

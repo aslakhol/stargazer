@@ -14,23 +14,24 @@ export const requestPerson = (query, searchTerm) => ({
   searchTerm,
   requestedAt: Date.now(),
 });
-export const recievePerson = (query, searchTerm, response = []) => ({
+export const recievePerson = (query, searchTerm, response = { count: 0, row: [] }) => ({
   type: RECIEVE_PERSON,
   query,
   searchTerm,
-  response,
+  count: response.count,
+  response: response.rows,
   recievedAt: Date.now(),
 });
 export const storeTimeout = timeout => ({ type: NEW_TIMEOUT, timeout });
 
 const fetchPersons = searchTerm => (dispatch, getState) => {
-  const { filter } = getState();
-  const queryString = createSearchQueryString(searchTerm, filter);
+  const { filter, currentPage } = getState();
+  const queryString = createSearchQueryString(searchTerm, filter, currentPage);
   dispatch(makeQuery(queryString, searchTerm));
   dispatch(requestPerson(queryString, searchTerm));
   fetch(queryString)
     .then(response => response.json())
-    .then(json => dispatch(recievePerson(queryString, searchTerm, json.rows)));
+    .then(json => dispatch(recievePerson(queryString, searchTerm, json)));
 };
 
 export const fetchPersonsIfNeeded = query => (dispatch, getState) => {
