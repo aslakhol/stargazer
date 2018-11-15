@@ -22,5 +22,10 @@ exports[`<App /> render() renders the component 1`] = `
   >
     <Connect(SearchPage) />
   </Row>
+  <Row
+    tag="div"
+  >
+    <Connect(PageSelect) />
+  </Row>
 </Container>
 `;
