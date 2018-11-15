@@ -15,6 +15,11 @@ export const NEW_TIMEOUT = 'NEW_TIMEOUT';
 export const INCLUDE_SELECTED = 'INCLUDE_SELECTED';
 export const EXCLUDE_SELECTED = 'EXCLUDE_SELECTED';
 
+// Pagination
+export const SET_PAGE = 'SET_PAGE';
+export const NEXT_PAGE = 'NEXT_PAGE';
+export const PREV_PAGE = 'PREV_PAGE';
+
 /* ---- Constants ---- */
 export const API_TIMEOUT_DURATION = 500;
 export const API_ENDPOINT = 'http://it2810-06.idi.ntnu.no/api/api/';
