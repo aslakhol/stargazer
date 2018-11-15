@@ -1,13 +1,13 @@
 import React from 'react';
 import {
-  Button, ListGroup, ListGroupItem,
+  Button, ListGroup,
 } from 'reactstrap';
+import QueryInHistory from './QueryInHistory';
 
 const SearchHistory = (props) => {
   const {
     onClickButton,
     isOpen,
-    result,
   } = props;
 
   return (
@@ -15,7 +15,7 @@ const SearchHistory = (props) => {
       <Button onClick={() => onClickButton()}>HISTORY</Button>
       <ListGroup>
         {
-        isOpen && <ListGroupItem>{JSON.stringify(result)}</ListGroupItem>
+        isOpen && <QueryInHistory />
       }
       </ListGroup>
     </div>
