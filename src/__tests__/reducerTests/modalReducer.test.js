@@ -1,5 +1,5 @@
 import modalReducer from '../../reducers/modalReducer';
-import { OPEN_MODAL, CLOSE_MODAL } from '../../constants';
+import { OPEN_MODAL, CLOSE_MODAL } from '../../utils/constants';
 
 describe('modalReducer', () => {
   describe('INITIAL_STATE', () => {

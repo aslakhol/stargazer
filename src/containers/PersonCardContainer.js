@@ -1,13 +1,11 @@
 import { connect } from 'react-redux';
 import PersonCard from '../components/PersonCard';
 import { clickPersonCard, pressEnterPersonCard } from '../actions/multiActions';
-import { IMG_URL_BASE } from '../constants';
-
-const getImgURL = person => `${IMG_URL_BASE}${person.id}.jpg`;
+import { getImgURL } from '../utils/urlUtil';
 
 const mapStateToProps = (state, ownProps) => ({
   person: ownProps.person,
-  imgUrl: getImgURL(ownProps.person),
+  imgUrl: getImgURL(ownProps.person.id),
 });
 
 const mapDispatchToProps = dispatch => ({

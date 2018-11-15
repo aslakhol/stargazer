@@ -1,4 +1,4 @@
-import { OPEN_MODAL, CLOSE_MODAL } from '../constants';
+import { OPEN_MODAL, CLOSE_MODAL } from '../utils/constants';
 
 const initialState = false;
 

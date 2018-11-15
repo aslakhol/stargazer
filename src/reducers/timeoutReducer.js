@@ -1,4 +1,4 @@
-import { NEW_TIMEOUT } from '../constants';
+import { NEW_TIMEOUT } from '../utils/constants';
 
 const initialState = -1;
 
