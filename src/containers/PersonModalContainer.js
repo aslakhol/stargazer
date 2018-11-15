@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { clickPersonCard, pressEnterPersonCard } from '../actions/multiActions';
-import PersonModal from '../components/PersonModal';
+import PersonModal from '../components/OldPersonModal';
 
 const mapStateToProps = (state, ownProps) => ({
   person: ownProps.person,
