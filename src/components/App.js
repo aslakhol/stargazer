@@ -21,7 +21,7 @@ function App() {
       <Row className="mb-3">
         <SearchPageContainer />
       </Row>
-      <Row >
+      <Row>
         <PageSelectContainer />
       </Row>
     </Container>
