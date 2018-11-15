@@ -1,5 +1,5 @@
 import {
-  REQUEST_HISTORY, SHOW_HISTORY, HIDE_HISTORY,
+  REQUEST_HISTORY, SHOW_HISTORY, HIDE_HISTORY, RECEIVE_HISTORY,
 } from '../constants';
 
 const initialState = {
@@ -13,6 +13,11 @@ const historyReducer = (state = initialState, action) => {
       return {
         ...state,
         queries: action.payload,
+      };
+    case RECEIVE_HISTORY:
+      return {
+        ...state,
+        result: action.response,
       };
     case SHOW_HISTORY:
       return {

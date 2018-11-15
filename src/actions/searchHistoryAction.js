@@ -15,12 +15,8 @@ export const receiveHistory = response => ({
 
 export const fetchHistory = () => (dispatch) => {
   const historyUrl = `${API_ENDPOINT}search`;
+  dispatch(requestHistory());
   fetch(historyUrl)
     .then(response => response.json())
-    .then((searches) => {
-      dispatch(requestHistory());
-      console.log(searches);
-      return searches;
-    })
-    .then(dispatch(receiveHistory(response => response.json())));
+    .then(json => dispatch(receiveHistory(json)));
 };

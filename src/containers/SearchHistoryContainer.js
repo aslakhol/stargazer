@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
 
 import SearchHistory from '../components/SearchHistory';
-import { fetchHistory } from '../actions/searchHistoryAction';
+import { clickHistoryButton } from '../actions/multiActions';
 
 const mapStateToProps = state => ({
   queries: state.request.result,
   isOpen: state.history.isOpen,
+  result: state.history.result,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClickButton: () => dispatch(fetchHistory()),
+  onClickButton: () => dispatch(clickHistoryButton()),
 });
 
 const SearchHistoryContainer = connect(

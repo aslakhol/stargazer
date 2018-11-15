@@ -1,22 +1,23 @@
 import React from 'react';
 import {
-  Button,
+  Button, ListGroup, ListGroupItem,
 } from 'reactstrap';
 
 const SearchHistory = (props) => {
   const {
     onClickButton,
     isOpen,
+    result,
   } = props;
 
   return (
     <div>
       <Button onClick={() => onClickButton()}>HISTORY</Button>
-      <div>
+      <ListGroup>
         {
-        isOpen && <h1>he</h1>
+        isOpen && <ListGroupItem>{JSON.stringify(result)}</ListGroupItem>
       }
-      </div>
+      </ListGroup>
     </div>
   );
 };

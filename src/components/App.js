@@ -6,7 +6,7 @@ import {
 
 import SearchPageContainer from '../containers/SearchPageContainer';
 import SearchBarContainer from '../containers/SearchBarContainer';
-import HistoryButtonContainer from '../containers/HistoryButtonContainer';
+import SearchHistoryContainer from '../containers/SearchHistoryContainer';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <SearchPageContainer />
       </Row>
       <Row>
-        <HistoryButtonContainer />
+        <SearchHistoryContainer />
       </Row>
     </Container>
   );
