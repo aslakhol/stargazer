@@ -5,10 +5,11 @@ import { fetchHistory } from '../actions/searchHistoryAction';
 
 const mapStateToProps = state => ({
   queries: state.request.result,
+  isOpen: state.history.isOpen,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onHistoryButtonClick: () => dispatch(fetchHistory()),
+  onClickButton: () => dispatch(fetchHistory()),
 });
 
 const SearchHistoryContainer = connect(

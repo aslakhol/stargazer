@@ -10,6 +10,7 @@ export const HIDE_HISTORY = 'HIDE_HISTORY';
 // Data Related
 export const SET_CURRENT_PERSON = 'SET_CURRENT_PERSON';
 export const REQUEST_HISTORY = 'REQUEST_HISTORY';
+export const RECEIVE_HISTORY = 'RECEIVE_HISTORY';
 
 // Query related
 export const REQUEST_PERSON = 'REQUEST_PERSON';

@@ -6,11 +6,17 @@ import {
 const SearchHistory = (props) => {
   const {
     onClickButton,
+    isOpen,
   } = props;
 
   return (
     <div>
       <Button onClick={() => onClickButton()}>HISTORY</Button>
+      <div>
+        {
+        isOpen && <h1>he</h1>
+      }
+      </div>
     </div>
   );
 };
