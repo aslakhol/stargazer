@@ -7,6 +7,7 @@ import {
 import SearchPageContainer from '../containers/SearchPageContainer';
 import SearchBarContainer from '../containers/SearchBarContainer';
 import FilterButtonsContainer from '../containers/FilterButtonsContainer';
+import ModalContainer from '../containers/ModalContainer';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Row className="mb-3">
         <SearchPageContainer />
       </Row>
+      <ModalContainer />
     </Container>
   );
 }
