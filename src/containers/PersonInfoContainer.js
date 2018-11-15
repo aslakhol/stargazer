@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import renderPersonInfo from '../components/renderPersonInfo';
+import renderPersonInfo from '../components/PersonInfo';
 import { clickPersonCard, pressEnterPersonCard } from '../actions/multiActions';
 
 const mapStateToProps = (state, ownProps) => ({

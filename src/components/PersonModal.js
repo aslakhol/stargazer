@@ -5,7 +5,6 @@ import {
   Row,
   Col,
 } from 'reactstrap';
-import PersonImgContainer from '../containers/PersonImgContainer';
 import PersonInfoContainer from '../containers/PersonInfoContainer';
 
 const PersonModal = (props) => {
@@ -13,6 +12,7 @@ const PersonModal = (props) => {
     modalOpen,
     currentPerson,
     closeModal,
+    imgUrl,
   } = props;
 
   return (
@@ -22,10 +22,10 @@ const PersonModal = (props) => {
           {currentPerson.name}
         </ModalHeader>
         <Row>
-          <Col md="6" sm="6">
-            <PersonImgContainer person={currentPerson} />
+          <Col md="5" sm="7">
+            <img src={imgUrl} alt={currentPerson.name} className="img-fluid rounded ml-3 mt-2" />
           </Col>
-          <Col md="6" sm="6">
+          <Col md="7" sm="7">
             <PersonInfoContainer person={currentPerson} />
           </Col>
         </Row>
