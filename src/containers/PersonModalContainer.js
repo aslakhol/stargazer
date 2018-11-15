@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
-import { clickPersonCard, pressEnterPersonCard } from '../actions/multiActions';
-import PersonModal from '../components/OldPersonModal';
 
-const mapStateToProps = (state, ownProps) => ({
-  person: ownProps.person,
-  cardCondition: ownProps.cardCondition,
+import { setModalClosed } from '../actions/modalActions';
+import PersonModal from '../components/PersonModal';
+
+const mapStateToProps = state => ({
+  modalOpen: state.modalOpen,
+  currentPerson: state.currentPerson,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClick: data => dispatch(clickPersonCard(data)),
-  handleKeyPress: (event, data) => dispatch(pressEnterPersonCard(event, data)),
+  closeModal: () => dispatch(setModalClosed()),
 });
 
 const PersonCardContainer = connect(

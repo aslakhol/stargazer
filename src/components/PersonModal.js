@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   Modal,
   ModalHeader,
   Row,
@@ -9,26 +8,30 @@ import {
 import PersonImgContainer from '../containers/PersonImgContainer';
 import PersonInfoContainer from '../containers/PersonInfoContainer';
 
-const PersonModal = () => {
+const PersonModal = (props) => {
+  const {
+    modalOpen,
+    currentPerson,
+    closeModal,
+  } = props;
+
   return (
     <div>
-      <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
-      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-        <ModalHeader toggle={this.toggle}>
-          {dummyPerson.name}
-          Navn her
-          </ModalHeader>
+      <Modal isOpen={modalOpen} toggle={() => closeModal()}>
+        <ModalHeader>
+          {currentPerson.name}
+        </ModalHeader>
         <Row>
           <Col md="6" sm="6">
-            <PersonImgContainer person={dummyPerson} />
+            <PersonImgContainer person={currentPerson} />
           </Col>
           <Col md="6" sm="6">
-            <PersonInfoContainer person={dummyPerson} />
+            <PersonInfoContainer person={currentPerson} />
           </Col>
         </Row>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
 export default PersonModal;

@@ -7,7 +7,7 @@ import {
 import SearchPageContainer from '../containers/SearchPageContainer';
 import SearchBarContainer from '../containers/SearchBarContainer';
 import FilterButtonsContainer from '../containers/FilterButtonsContainer';
-import ModalContainer from '../containers/ModalContainer';
+import PersonModalContainer from '../containers/PersonModalContainer';
 import PageSelectContainer from '../containers/PageSelectContainer';
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
       <Row>
         <PageSelectContainer />
       </Row>
-      <ModalContainer />
+      <PersonModalContainer />
     </Container>
   );
 }
