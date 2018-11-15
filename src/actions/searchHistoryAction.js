@@ -13,6 +13,7 @@ export const fetchHistory = () => (dispatch) => {
     .then(response => response.json())
     .then((searches) => {
       dispatch(requestHistory());
+      console.log(searches);
       return searches;
     });
 };
