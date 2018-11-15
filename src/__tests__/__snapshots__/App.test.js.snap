@@ -27,5 +27,6 @@ exports[`<App /> render() renders the component 1`] = `
   >
     <Connect(PageSelect) />
   </Row>
+  <Connect(PersonModal) />
 </Container>
 `;
