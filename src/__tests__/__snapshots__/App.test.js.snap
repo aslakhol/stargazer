@@ -4,6 +4,13 @@ exports[`<App /> render() renders the component 1`] = `
 <Container
   tag="div"
 >
+  <div>
+    <img
+      alt="Stargazer"
+      src="stargazer.svg"
+      width="40%"
+    />
+  </div>
   <Row
     className="mt-3 mx-0"
     tag="div"
