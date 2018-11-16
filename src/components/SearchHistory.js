@@ -5,6 +5,7 @@ import {
   ListGroup,
   ListGroupItem,
 } from 'reactstrap';
+
 import { SEARCH_HISTORY_ENTRIES } from '../utils/constants';
 
 const SearchHistory = (props) => {

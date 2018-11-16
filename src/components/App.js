@@ -20,37 +20,35 @@ to a neat and comprehensive format.
 */
 import SortingButtonsContainer from '../containers/SortingButtonsContainer';
 
-function App() {
-  return (
-    <Container>
-      <Row>
-        <Col className="titleStyle">
-          STARGAZER
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <FilterButtonsContainer />
-        </Col>
-        <Col>
-          <SortingButtonsContainer />
-        </Col>
-      </Row>
-      <Row className="my-3 mx-0">
-        <SearchBarContainer />
-      </Row>
-      <Row className="mb-3">
-        <SearchPageContainer />
-      </Row>
-      <Row>
-        <PageSelectContainer />
-      </Row>
-      <Row>
-        <SearchHistoryContainer />
-      </Row>
-      <PersonModalContainer />
-    </Container>
-  );
-}
+const App = () => (
+  <Container>
+    <Row>
+      <Col className="titleStyle">
+        STARGAZER
+      </Col>
+    </Row>
+    <Row className="mt-3">
+      <Col>
+        <FilterButtonsContainer />
+      </Col>
+      <Col>
+        <SortingButtonsContainer />
+      </Col>
+    </Row>
+    <Row className="my-3 mx-0">
+      <SearchBarContainer />
+    </Row>
+    <Row className="mb-3">
+      <SearchPageContainer />
+    </Row>
+    <Row>
+      <PageSelectContainer />
+    </Row>
+    <Row>
+      <SearchHistoryContainer />
+    </Row>
+    <PersonModalContainer />
+  </Container>
+);
 
 export default App;
