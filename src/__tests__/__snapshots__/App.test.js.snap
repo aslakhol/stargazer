@@ -54,6 +54,11 @@ exports[`<App /> render() renders the component 1`] = `
   >
     <Connect(PageSelect) />
   </Row>
+  <Row
+    tag="div"
+  >
+    <Connect(SearchHistory) />
+  </Row>
   <Connect(PersonModal) />
 </Container>
 `;
