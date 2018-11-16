@@ -22,8 +22,3 @@ describe("Tests the filtering", () => {
       .should("not.contain", "Owen Lars")
   })
 })
-/*
-
-  it("Filters on female and expects 1 result", () => {
-  })
-*/
