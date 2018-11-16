@@ -3,17 +3,14 @@ import {
 } from '../utils/constants';
 
 const initialState = {
-  queries: [],
+  result: [],
   isOpen: false,
 };
 
 const historyReducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_HISTORY:
-      return {
-        ...state,
-        queries: action.payload,
-      };
+      return state;
     case RECEIVE_HISTORY:
       return {
         ...state,

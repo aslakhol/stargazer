@@ -1,8 +1,8 @@
 import {
-  API_ENDPOINT,
   REQUEST_HISTORY,
   RECEIVE_HISTORY,
 } from '../utils/constants';
+import { getHistoryUrl } from '../utils/urlUtil';
 
 export const requestHistory = () => ({
   type: REQUEST_HISTORY,
@@ -14,7 +14,7 @@ export const receiveHistory = response => ({
 });
 
 export const fetchHistory = () => (dispatch) => {
-  const historyUrl = `${API_ENDPOINT}search`;
+  const historyUrl = getHistoryUrl();
   dispatch(requestHistory());
   fetch(historyUrl)
     .then(response => response.json())

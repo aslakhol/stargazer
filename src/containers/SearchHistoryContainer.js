@@ -6,7 +6,7 @@ import { clickHistoryButton } from '../actions/multiActions';
 const mapStateToProps = state => ({
   queries: state.request.result,
   isOpen: state.history.isOpen,
-  result: state.history.result,
+  searches: state.history.result,
 });
 
 const mapDispatchToProps = dispatch => ({
