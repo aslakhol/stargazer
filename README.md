@@ -47,7 +47,7 @@ Swapi is as mentioned earlier an open source API providing extensive data on cha
 While the API provides extensive information and specifications it does not supply any pictures. As we wanted the pictures to play the lead role in the application we decided to import them through generating an appropriate URL for each character. Luckily, [starwars-visualguide](https://starwars-visualguide.com/), a website supplying much of the same services as we aim to provide, uses Swapi as-well, and they have supplied all characters with pictures. 
 By appending their URL with the ‘person’ table, followed by /person.id followed by .jpg we could quickly extract all necessary pictures in real time, without having to tailor a solution of our own.
 
-[Swapi](swapi.co/)
+[Swapi](https://swapi.co/)
 
 
 ### NPM
