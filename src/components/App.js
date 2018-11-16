@@ -11,12 +11,24 @@ import SearchHistoryContainer from '../containers/SearchHistoryContainer';
 import FilterButtonsContainer from '../containers/FilterButtonsContainer';
 import PersonModalContainer from '../containers/PersonModalContainer';
 import PageSelectContainer from '../containers/PageSelectContainer';
+import '../utils/fontStyle.css';
+
+/*
+By using containers for the different functionality we
+have managed to 'shrink' the size of our App.js file
+to a neat and comprehensive format.
+*/
 import SortingButtonsContainer from '../containers/SortingButtonsContainer';
 
 function App() {
   return (
     <Container>
-      <Row className="mt-3 ">
+      <Row>
+        <Col className="titleStyle">
+          STARGAZER
+        </Col>
+      </Row>
+      <Row>
         <Col>
           <FilterButtonsContainer />
         </Col>
