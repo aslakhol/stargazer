@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchHistory /> renders the component 1`] = `
+<div
+  className="mx-auto"
+>
+  <Row
+    tag="div"
+  >
+    <Button
+      className="mx-auto"
+      color="primary"
+      onClick={[Function]}
+      tag="button"
+    >
+      HISTORY
+    </Button>
+  </Row>
+  <Row
+    tag="div"
+  >
+    <ListGroup
+      className="my-3"
+      tag="ul"
+    />
+  </Row>
+</div>
+`;
