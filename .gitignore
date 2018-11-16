@@ -108,3 +108,5 @@ fabric.properties
 
 # Sonarlint plugin
 .idea/sonarlint
+
+cypress/videos/
