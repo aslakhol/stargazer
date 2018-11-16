@@ -1,4 +1,9 @@
-import { API_ENDPOINT, IMG_URL_BASE, PAGE_SIZE } from './constants';
+import {
+  API_ENDPOINT,
+  IMG_URL_BASE,
+  PAGE_SIZE,
+  HISTORY_ENDPOINT,
+} from './constants';
 
 const prepareFilterString = (filter) => {
   if (filter.length === 0) {
@@ -15,16 +20,18 @@ const preparePaginationString = (pageNum = 0) => {
 };
 
 // This function was designed to make it easy to enable changing of sort directions.
-const prepareSortString = (column, direction) => {
-  const dirStr = direction ? `&direction=${direction}` : '';
-  return `&column=${column}${dirStr}`;
+const prepareSortString = (sortBy, order) => {
+  const dirStr = order ? `&order=${order}` : '';
+  return `&sortBy=${sortBy}${dirStr}`;
 };
 
-export const createSearchQueryString = (query, filter, pageNum, column) => {
+export const createSearchQueryString = (query, filter, pageNum, sortBy) => {
   const filterString = prepareFilterString(filter);
   const paginationString = preparePaginationString(pageNum);
-  const sortString = prepareSortString(column);
+  const sortString = prepareSortString(sortBy);
   return `${API_ENDPOINT}people?search=${query}${filterString}${paginationString}${sortString}`;
 };
 
 export const getImgURL = id => `${IMG_URL_BASE}${id}.jpg`;
+
+export const getHistoryUrl = () => `${API_ENDPOINT}${HISTORY_ENDPOINT}`;

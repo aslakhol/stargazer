@@ -1,13 +1,13 @@
 import { SORT_BY_SELECTED } from '../utils/constants';
 
-const initialState = { column: 'id', direction: 'asc' };
+const initialState = { sortBy: 'id', order: 'asc' };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SORT_BY_SELECTED:
       return {
         ...state,
-        column: action.selected,
+        sortBy: action.selected,
       };
     default:
       return state;

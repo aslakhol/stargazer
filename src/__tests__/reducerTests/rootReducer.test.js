@@ -9,14 +9,14 @@ describe('rootReducer', () => {
         currentPage: 0,
         currentPerson: {},
         filter: [],
+        history: { isOpen: false, result: [] },
         modalOpen: false,
         request: {
           count: 0, isFetching: false, query: '', receivedAt: 0, requestedAt: 0, result: [], searchTerm: '',
         },
-        sort: { column: 'id', direction: 'asc' },
+        sort: { sortBy: 'id', order: 'asc' },
         timeout: -1,
       };
-
       expect(rootReducer(undefined, action)).toEqual(initialState);
     });
   });
@@ -33,187 +33,291 @@ describe('rootReducer', () => {
           modalOpen: false,
           request: {
             isFetching: false,
-            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&column=id',
+            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&sortBy=id',
             searchTerm: 'luke',
             requestedAt: 1542373724160,
             count: 1,
             result: [{
-              id: 1,
-              name: 'Luke Skywalker',
-              height: '172',
-              mass: '77',
-              hair_color: 'blond',
-              skin_color: 'fair',
-              eye_color: 'blue',
-              birth_year: '19BBY',
-              gender: 'male',
-              homeworld: 1,
+              id: 3,
+              name: 'R2-D2',
+              height: '96',
+              mass: '32',
+              hair_color: 'n/a',
+              skin_color: 'white, blue',
+              eye_color: 'red',
+              birth_year: '33BBY',
+              gender: 'n/a',
+              model: 'Character',
+              homeworld: 8,
               SpeciesId: null,
               Planet: {
-                id: 1, climate: 'arid', surface_water: '1', name: 'Tatooine', diameter: '10465', rotation_period: '23', terrain: 'desert', gravity: '1 standard', orbital_period: '304', population: '200000',
+                id: 8, climate: 'temperate', surface_water: '12', name: 'Naboo', diameter: '12120', rotation_period: '26', terrain: 'grassy hills, swamps, forests, mountains', gravity: '1 standard', orbital_period: '312', population: '4500000000', model: 'Planet',
               },
             }],
           },
-          timeout: 37,
+          timeout: 34,
+          history: {
+            result: [{
+              id: 320, search_url: '/api/people?search=r2-d2&limit=4&offset=0&column=id', search_string: 'r2-d2', model: 'people', createdAt: '2018-11-16T19:07:21.032Z', updatedAt: '2018-11-16T19:07:21.032Z',
+            }, {
+              id: 319, search_url: '/api/people?search=r2-&limit=4&offset=0&column=id', search_string: 'r2-', model: 'people', createdAt: '2018-11-16T19:07:20.348Z', updatedAt: '2018-11-16T19:07:20.348Z',
+            }, {
+              id: 318, search_url: '/api/people?search=r2&limit=4&offset=0&column=id', search_string: 'r2', model: 'people', createdAt: '2018-11-16T19:07:17.972Z', updatedAt: '2018-11-16T19:07:17.972Z',
+            }, {
+              id: 317, search_url: '/api/people?search=r2&limit=4&offset=0&column=id', search_string: 'r2', model: 'people', createdAt: '2018-11-16T19:06:55.200Z', updatedAt: '2018-11-16T19:06:55.200Z',
+            }, {
+              id: 316, search_url: '/api/people?search=h&limit=4&offset=0', search_string: 'h', model: 'people', createdAt: '2018-11-16T19:05:52.898Z', updatedAt: '2018-11-16T19:05:52.898Z',
+            }, {
+              id: 315, search_url: '/api/people?search=IG-88&limit=4&offset=0&column=id', search_string: 'IG-88', model: 'people', createdAt: '2018-11-16T19:05:24.613Z', updatedAt: '2018-11-16T19:05:24.613Z',
+            }, {
+              id: 314, search_url: '/api/people?search=Lars&exclude=male,hermaphrodite,n/a,&limit=4&offset=0&column=id', search_string: 'Lars', model: 'people', createdAt: '2018-11-16T19:05:00.121Z', updatedAt: '2018-11-16T19:05:00.121Z',
+            }, {
+              id: 313, search_url: '/api/people?search=Lars&limit=4&offset=0&column=id', search_string: 'Lars', model: 'people', createdAt: '2018-11-16T19:04:58.238Z', updatedAt: '2018-11-16T19:04:58.238Z',
+            }, {
+              id: 312, search_url: '/api/planets/?search=naboo&sortBy=name&order=desc', search_string: 'naboo', model: 'planet', createdAt: '2018-11-16T18:51:22.722Z', updatedAt: '2018-11-16T18:51:22.722Z',
+            }, {
+              id: 311, search_url: '/api/people?search=%20&limit=4&offset=0', search_string: ' ', model: 'people', createdAt: '2018-11-16T18:46:25.733Z', updatedAt: '2018-11-16T18:46:25.733Z',
+            }],
+            isOpen: false,
+          },
           filter: [],
           currentPage: 0,
-          sort: { column: 'id', direction: 'asc' },
+          sort: { sortBy: 'id', order: 'asc' },
         }, {
           type: 'SET_CURRENT_PERSON',
           data: {
-            id: 1,
-            name: 'Luke Skywalker',
-            height: '172',
-            mass: '77',
-            hair_color: 'blond',
-            skin_color: 'fair',
-            eye_color: 'blue',
-            birth_year: '19BBY',
-            gender: 'male',
-            homeworld: 1,
+            id: 3,
+            name: 'R2-D2',
+            height: '96',
+            mass: '32',
+            hair_color: 'n/a',
+            skin_color: 'white, blue',
+            eye_color: 'red',
+            birth_year: '33BBY',
+            gender: 'n/a',
+            model: 'Character',
+            homeworld: 8,
             SpeciesId: null,
             Planet: {
-              id: 1, climate: 'arid', surface_water: '1', name: 'Tatooine', diameter: '10465', rotation_period: '23', terrain: 'desert', gravity: '1 standard', orbital_period: '304', population: '200000',
+              id: 8, climate: 'temperate', surface_water: '12', name: 'Naboo', diameter: '12120', rotation_period: '26', terrain: 'grassy hills, swamps, forests, mountains', gravity: '1 standard', orbital_period: '312', population: '4500000000', model: 'Planet',
             },
           },
         });
         expect(state).toEqual({
           currentPerson: {
-            id: 1,
-            name: 'Luke Skywalker',
-            height: '172',
-            mass: '77',
-            hair_color: 'blond',
-            skin_color: 'fair',
-            eye_color: 'blue',
-            birth_year: '19BBY',
-            gender: 'male',
-            homeworld: 1,
+            id: 3,
+            name: 'R2-D2',
+            height: '96',
+            mass: '32',
+            hair_color: 'n/a',
+            skin_color: 'white, blue',
+            eye_color: 'red',
+            birth_year: '33BBY',
+            gender: 'n/a',
+            model: 'Character',
+            homeworld: 8,
             SpeciesId: null,
             Planet: {
-              id: 1, climate: 'arid', surface_water: '1', name: 'Tatooine', diameter: '10465', rotation_period: '23', terrain: 'desert', gravity: '1 standard', orbital_period: '304', population: '200000',
+              id: 8, climate: 'temperate', surface_water: '12', name: 'Naboo', diameter: '12120', rotation_period: '26', terrain: 'grassy hills, swamps, forests, mountains', gravity: '1 standard', orbital_period: '312', population: '4500000000', model: 'Planet',
             },
           },
           modalOpen: false,
           request: {
             isFetching: false,
-            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&column=id',
+            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&sortBy=id',
             searchTerm: 'luke',
             requestedAt: 1542373724160,
             count: 1,
             result: [{
-              id: 1,
-              name: 'Luke Skywalker',
-              height: '172',
-              mass: '77',
-              hair_color: 'blond',
-              skin_color: 'fair',
-              eye_color: 'blue',
-              birth_year: '19BBY',
-              gender: 'male',
-              homeworld: 1,
+              id: 3,
+              name: 'R2-D2',
+              height: '96',
+              mass: '32',
+              hair_color: 'n/a',
+              skin_color: 'white, blue',
+              eye_color: 'red',
+              birth_year: '33BBY',
+              gender: 'n/a',
+              model: 'Character',
+              homeworld: 8,
               SpeciesId: null,
               Planet: {
-                id: 1, climate: 'arid', surface_water: '1', name: 'Tatooine', diameter: '10465', rotation_period: '23', terrain: 'desert', gravity: '1 standard', orbital_period: '304', population: '200000',
+                id: 8, climate: 'temperate', surface_water: '12', name: 'Naboo', diameter: '12120', rotation_period: '26', terrain: 'grassy hills, swamps, forests, mountains', gravity: '1 standard', orbital_period: '312', population: '4500000000', model: 'Planet',
               },
             }],
           },
-          timeout: 37,
+          timeout: 34,
+          history: {
+            result: [{
+              id: 320, search_url: '/api/people?search=r2-d2&limit=4&offset=0&column=id', search_string: 'r2-d2', model: 'people', createdAt: '2018-11-16T19:07:21.032Z', updatedAt: '2018-11-16T19:07:21.032Z',
+            }, {
+              id: 319, search_url: '/api/people?search=r2-&limit=4&offset=0&column=id', search_string: 'r2-', model: 'people', createdAt: '2018-11-16T19:07:20.348Z', updatedAt: '2018-11-16T19:07:20.348Z',
+            }, {
+              id: 318, search_url: '/api/people?search=r2&limit=4&offset=0&column=id', search_string: 'r2', model: 'people', createdAt: '2018-11-16T19:07:17.972Z', updatedAt: '2018-11-16T19:07:17.972Z',
+            }, {
+              id: 317, search_url: '/api/people?search=r2&limit=4&offset=0&column=id', search_string: 'r2', model: 'people', createdAt: '2018-11-16T19:06:55.200Z', updatedAt: '2018-11-16T19:06:55.200Z',
+            }, {
+              id: 316, search_url: '/api/people?search=h&limit=4&offset=0', search_string: 'h', model: 'people', createdAt: '2018-11-16T19:05:52.898Z', updatedAt: '2018-11-16T19:05:52.898Z',
+            }, {
+              id: 315, search_url: '/api/people?search=IG-88&limit=4&offset=0&column=id', search_string: 'IG-88', model: 'people', createdAt: '2018-11-16T19:05:24.613Z', updatedAt: '2018-11-16T19:05:24.613Z',
+            }, {
+              id: 314, search_url: '/api/people?search=Lars&exclude=male,hermaphrodite,n/a,&limit=4&offset=0&column=id', search_string: 'Lars', model: 'people', createdAt: '2018-11-16T19:05:00.121Z', updatedAt: '2018-11-16T19:05:00.121Z',
+            }, {
+              id: 313, search_url: '/api/people?search=Lars&limit=4&offset=0&column=id', search_string: 'Lars', model: 'people', createdAt: '2018-11-16T19:04:58.238Z', updatedAt: '2018-11-16T19:04:58.238Z',
+            }, {
+              id: 312, search_url: '/api/planets/?search=naboo&sortBy=name&order=desc', search_string: 'naboo', model: 'planet', createdAt: '2018-11-16T18:51:22.722Z', updatedAt: '2018-11-16T18:51:22.722Z',
+            }, {
+              id: 311, search_url: '/api/people?search=%20&limit=4&offset=0', search_string: ' ', model: 'people', createdAt: '2018-11-16T18:46:25.733Z', updatedAt: '2018-11-16T18:46:25.733Z',
+            }],
+            isOpen: false,
+          },
           filter: [],
           currentPage: 0,
-          sort: { column: 'id', direction: 'asc' },
+          sort: { sortBy: 'id', order: 'asc' },
         });
         state = rootReducer({
           currentPerson: {
-            id: 1,
-            name: 'Luke Skywalker',
-            height: '172',
-            mass: '77',
-            hair_color: 'blond',
-            skin_color: 'fair',
-            eye_color: 'blue',
-            birth_year: '19BBY',
-            gender: 'male',
-            homeworld: 1,
+            id: 3,
+            name: 'R2-D2',
+            height: '96',
+            mass: '32',
+            hair_color: 'n/a',
+            skin_color: 'white, blue',
+            eye_color: 'red',
+            birth_year: '33BBY',
+            gender: 'n/a',
+            model: 'Character',
+            homeworld: 8,
             SpeciesId: null,
             Planet: {
-              id: 1, climate: 'arid', surface_water: '1', name: 'Tatooine', diameter: '10465', rotation_period: '23', terrain: 'desert', gravity: '1 standard', orbital_period: '304', population: '200000',
+              id: 8, climate: 'temperate', surface_water: '12', name: 'Naboo', diameter: '12120', rotation_period: '26', terrain: 'grassy hills, swamps, forests, mountains', gravity: '1 standard', orbital_period: '312', population: '4500000000', model: 'Planet',
             },
           },
           modalOpen: false,
           request: {
             isFetching: false,
-            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&column=id',
+            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&sortBy=id',
             searchTerm: 'luke',
             requestedAt: 1542373724160,
             count: 1,
             result: [{
-              id: 1,
-              name: 'Luke Skywalker',
-              height: '172',
-              mass: '77',
-              hair_color: 'blond',
-              skin_color: 'fair',
-              eye_color: 'blue',
-              birth_year: '19BBY',
-              gender: 'male',
-              homeworld: 1,
+              id: 3,
+              name: 'R2-D2',
+              height: '96',
+              mass: '32',
+              hair_color: 'n/a',
+              skin_color: 'white, blue',
+              eye_color: 'red',
+              birth_year: '33BBY',
+              gender: 'n/a',
+              model: 'Character',
+              homeworld: 8,
               SpeciesId: null,
               Planet: {
-                id: 1, climate: 'arid', surface_water: '1', name: 'Tatooine', diameter: '10465', rotation_period: '23', terrain: 'desert', gravity: '1 standard', orbital_period: '304', population: '200000',
+                id: 8, climate: 'temperate', surface_water: '12', name: 'Naboo', diameter: '12120', rotation_period: '26', terrain: 'grassy hills, swamps, forests, mountains', gravity: '1 standard', orbital_period: '312', population: '4500000000', model: 'Planet',
               },
             }],
           },
-          timeout: 37,
+          timeout: 34,
+          history: {
+            result: [{
+              id: 320, search_url: '/api/people?search=r2-d2&limit=4&offset=0&column=id', search_string: 'r2-d2', model: 'people', createdAt: '2018-11-16T19:07:21.032Z', updatedAt: '2018-11-16T19:07:21.032Z',
+            }, {
+              id: 319, search_url: '/api/people?search=r2-&limit=4&offset=0&column=id', search_string: 'r2-', model: 'people', createdAt: '2018-11-16T19:07:20.348Z', updatedAt: '2018-11-16T19:07:20.348Z',
+            }, {
+              id: 318, search_url: '/api/people?search=r2&limit=4&offset=0&column=id', search_string: 'r2', model: 'people', createdAt: '2018-11-16T19:07:17.972Z', updatedAt: '2018-11-16T19:07:17.972Z',
+            }, {
+              id: 317, search_url: '/api/people?search=r2&limit=4&offset=0&column=id', search_string: 'r2', model: 'people', createdAt: '2018-11-16T19:06:55.200Z', updatedAt: '2018-11-16T19:06:55.200Z',
+            }, {
+              id: 316, search_url: '/api/people?search=h&limit=4&offset=0', search_string: 'h', model: 'people', createdAt: '2018-11-16T19:05:52.898Z', updatedAt: '2018-11-16T19:05:52.898Z',
+            }, {
+              id: 315, search_url: '/api/people?search=IG-88&limit=4&offset=0&column=id', search_string: 'IG-88', model: 'people', createdAt: '2018-11-16T19:05:24.613Z', updatedAt: '2018-11-16T19:05:24.613Z',
+            }, {
+              id: 314, search_url: '/api/people?search=Lars&exclude=male,hermaphrodite,n/a,&limit=4&offset=0&column=id', search_string: 'Lars', model: 'people', createdAt: '2018-11-16T19:05:00.121Z', updatedAt: '2018-11-16T19:05:00.121Z',
+            }, {
+              id: 313, search_url: '/api/people?search=Lars&limit=4&offset=0&column=id', search_string: 'Lars', model: 'people', createdAt: '2018-11-16T19:04:58.238Z', updatedAt: '2018-11-16T19:04:58.238Z',
+            }, {
+              id: 312, search_url: '/api/planets/?search=naboo&sortBy=name&order=desc', search_string: 'naboo', model: 'planet', createdAt: '2018-11-16T18:51:22.722Z', updatedAt: '2018-11-16T18:51:22.722Z',
+            }, {
+              id: 311, search_url: '/api/people?search=%20&limit=4&offset=0', search_string: ' ', model: 'people', createdAt: '2018-11-16T18:46:25.733Z', updatedAt: '2018-11-16T18:46:25.733Z',
+            }],
+            isOpen: false,
+          },
           filter: [],
           currentPage: 0,
-          sort: { column: 'id', direction: 'asc' },
+          sort: { sortBy: 'id', order: 'asc' },
         }, { type: 'OPEN_MODAL' });
         expect(state).toEqual({
           currentPerson: {
-            id: 1,
-            name: 'Luke Skywalker',
-            height: '172',
-            mass: '77',
-            hair_color: 'blond',
-            skin_color: 'fair',
-            eye_color: 'blue',
-            birth_year: '19BBY',
-            gender: 'male',
-            homeworld: 1,
+            id: 3,
+            name: 'R2-D2',
+            height: '96',
+            mass: '32',
+            hair_color: 'n/a',
+            skin_color: 'white, blue',
+            eye_color: 'red',
+            birth_year: '33BBY',
+            gender: 'n/a',
+            model: 'Character',
+            homeworld: 8,
             SpeciesId: null,
             Planet: {
-              id: 1, climate: 'arid', surface_water: '1', name: 'Tatooine', diameter: '10465', rotation_period: '23', terrain: 'desert', gravity: '1 standard', orbital_period: '304', population: '200000',
+              id: 8, climate: 'temperate', surface_water: '12', name: 'Naboo', diameter: '12120', rotation_period: '26', terrain: 'grassy hills, swamps, forests, mountains', gravity: '1 standard', orbital_period: '312', population: '4500000000', model: 'Planet',
             },
           },
           modalOpen: true,
           request: {
             isFetching: false,
-            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&column=id',
+            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&sortBy=id',
             searchTerm: 'luke',
             requestedAt: 1542373724160,
             count: 1,
             result: [{
-              id: 1,
-              name: 'Luke Skywalker',
-              height: '172',
-              mass: '77',
-              hair_color: 'blond',
-              skin_color: 'fair',
-              eye_color: 'blue',
-              birth_year: '19BBY',
-              gender: 'male',
-              homeworld: 1,
+              id: 3,
+              name: 'R2-D2',
+              height: '96',
+              mass: '32',
+              hair_color: 'n/a',
+              skin_color: 'white, blue',
+              eye_color: 'red',
+              birth_year: '33BBY',
+              gender: 'n/a',
+              model: 'Character',
+              homeworld: 8,
               SpeciesId: null,
               Planet: {
-                id: 1, climate: 'arid', surface_water: '1', name: 'Tatooine', diameter: '10465', rotation_period: '23', terrain: 'desert', gravity: '1 standard', orbital_period: '304', population: '200000',
+                id: 8, climate: 'temperate', surface_water: '12', name: 'Naboo', diameter: '12120', rotation_period: '26', terrain: 'grassy hills, swamps, forests, mountains', gravity: '1 standard', orbital_period: '312', population: '4500000000', model: 'Planet',
               },
             }],
           },
-          timeout: 37,
+          timeout: 34,
+          history: {
+            result: [{
+              id: 320, search_url: '/api/people?search=r2-d2&limit=4&offset=0&column=id', search_string: 'r2-d2', model: 'people', createdAt: '2018-11-16T19:07:21.032Z', updatedAt: '2018-11-16T19:07:21.032Z',
+            }, {
+              id: 319, search_url: '/api/people?search=r2-&limit=4&offset=0&column=id', search_string: 'r2-', model: 'people', createdAt: '2018-11-16T19:07:20.348Z', updatedAt: '2018-11-16T19:07:20.348Z',
+            }, {
+              id: 318, search_url: '/api/people?search=r2&limit=4&offset=0&column=id', search_string: 'r2', model: 'people', createdAt: '2018-11-16T19:07:17.972Z', updatedAt: '2018-11-16T19:07:17.972Z',
+            }, {
+              id: 317, search_url: '/api/people?search=r2&limit=4&offset=0&column=id', search_string: 'r2', model: 'people', createdAt: '2018-11-16T19:06:55.200Z', updatedAt: '2018-11-16T19:06:55.200Z',
+            }, {
+              id: 316, search_url: '/api/people?search=h&limit=4&offset=0', search_string: 'h', model: 'people', createdAt: '2018-11-16T19:05:52.898Z', updatedAt: '2018-11-16T19:05:52.898Z',
+            }, {
+              id: 315, search_url: '/api/people?search=IG-88&limit=4&offset=0&column=id', search_string: 'IG-88', model: 'people', createdAt: '2018-11-16T19:05:24.613Z', updatedAt: '2018-11-16T19:05:24.613Z',
+            }, {
+              id: 314, search_url: '/api/people?search=Lars&exclude=male,hermaphrodite,n/a,&limit=4&offset=0&column=id', search_string: 'Lars', model: 'people', createdAt: '2018-11-16T19:05:00.121Z', updatedAt: '2018-11-16T19:05:00.121Z',
+            }, {
+              id: 313, search_url: '/api/people?search=Lars&limit=4&offset=0&column=id', search_string: 'Lars', model: 'people', createdAt: '2018-11-16T19:04:58.238Z', updatedAt: '2018-11-16T19:04:58.238Z',
+            }, {
+              id: 312, search_url: '/api/planets/?search=naboo&sortBy=name&order=desc', search_string: 'naboo', model: 'planet', createdAt: '2018-11-16T18:51:22.722Z', updatedAt: '2018-11-16T18:51:22.722Z',
+            }, {
+              id: 311, search_url: '/api/people?search=%20&limit=4&offset=0', search_string: ' ', model: 'people', createdAt: '2018-11-16T18:46:25.733Z', updatedAt: '2018-11-16T18:46:25.733Z',
+            }],
+            isOpen: false,
+          },
           filter: [],
           currentPage: 0,
-          sort: { column: 'id', direction: 'asc' },
+          sort: { sortBy: 'id', order: 'asc' },
         });
       });
     });
