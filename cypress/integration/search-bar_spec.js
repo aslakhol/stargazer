@@ -4,7 +4,7 @@ describe("Tests the searchbar", () => {
     cy.visit("localhost:3000")
   })
 
-  it("Focuses the searchbar on load",  () => {
+  it("Focuses the searchbar on load", () => {
     cy.focused()
       .should("have.class", "form-control")
   })
@@ -21,5 +21,5 @@ describe("Tests the searchbar", () => {
       .focused().clear()
     cy.get("div.mb-3.row").children().should("be.visible")
   })
-  
+
 })
