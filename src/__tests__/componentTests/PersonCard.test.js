@@ -1,10 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-// import configureStore from 'redux-mock-store'; // Smart components
 
-// Component to be tested
-import PersonCard from '../components/PersonCard';
+import PersonCard from '../../components/PersonCard';
 
 const mockPerson = {
   name: 'C-3PO',
@@ -17,6 +15,16 @@ describe('<PersonCard />', () => {
       const component = shallow(<PersonCard person={mockPerson} />);
 
       expect(toJson(component)).toMatchSnapshot();
+    });
+  });
+
+  describe('onClick', () => {
+    it('calls onClick', () => {
+      const mockOnClick = jest.fn();
+      const component = shallow(<PersonCard person={mockPerson} onClick={mockOnClick} />);
+
+      component.simulate('click');
+      expect(mockOnClick.mock.instances.length).toBe(1);
     });
   });
 });

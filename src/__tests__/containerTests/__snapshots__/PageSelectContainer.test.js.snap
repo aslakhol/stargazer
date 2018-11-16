@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PageSelectContainer /> Clicking the buttons last button dispatches go to next 1`] = `
+Array [
+  Object {
+    "pageNum": 0,
+    "type": "SET_PAGE",
+  },
+  Object {
+    "timeout": 6,
+    "type": "NEW_TIMEOUT",
+  },
+  Object {
+    "type": "NEXT_PAGE",
+  },
+  Object {
+    "timeout": 9,
+    "type": "NEW_TIMEOUT",
+  },
+]
+`;
+
+exports[`<PageSelectContainer /> Clicking the buttons not first nor last button dispatches go to page 1`] = `
+Array [
+  Object {
+    "pageNum": 0,
+    "type": "SET_PAGE",
+  },
+  Object {
+    "timeout": 6,
+    "type": "NEW_TIMEOUT",
+  },
+]
+`;
+
+exports[`<PageSelectContainer /> should render successfully 1`] = `
+<PageSelect
+  count={10}
+  goToPage={[Function]}
+  nextPage={[Function]}
+  pageCount={3}
+  prevPage={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+/>
+`;

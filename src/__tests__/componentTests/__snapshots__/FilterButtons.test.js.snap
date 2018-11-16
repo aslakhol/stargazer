@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilterButtons /> renders the component 1`] = `
+<div
+  className="btn-group"
+  role="group"
+>
+  <Button
+    active={true}
+    color="primary"
+    key="Male"
+    onClick={[Function]}
+    tag="button"
+  >
+    Male
+  </Button>
+  <Button
+    active={true}
+    color="primary"
+    key="Female"
+    onClick={[Function]}
+    tag="button"
+  >
+    Female
+  </Button>
+  <Button
+    active={true}
+    color="primary"
+    key="Hermaphrodite"
+    onClick={[Function]}
+    tag="button"
+  >
+    Hermaphrodite
+  </Button>
+  <Button
+    active={true}
+    color="primary"
+    key="N/A"
+    onClick={[Function]}
+    tag="button"
+  >
+    N/A
+  </Button>
+</div>
+`;
