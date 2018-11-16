@@ -1,4 +1,4 @@
-describe("Tests the filtering", () => {
+describe("Tests the order by", () => {
 
   beforeEach(() => {
     cy.visit("localhost:3000")
@@ -7,13 +7,10 @@ describe("Tests the filtering", () => {
   it("Searches for Skywalker and sorts by name", () => {
     cy.get(".form-control")
       .click()
-      .type("Skywalker")
-      cy.get("div.mb-3.row")
-      .children().should("be.visible")
+      .type("Skywalker").get("div.mb-3.row")
+      .get("h5.card-title").first().contains("Luke Skywalker")
       .get(".btn-group").contains("Name").click()
-      cy.get("div.mb-3.row")
-      .children().should("be.visible")
-
-
-    })
+      .wait(1000)
+      .get("h5.card-title").first().contains("Anakin Skywalker")
+  })
 })
