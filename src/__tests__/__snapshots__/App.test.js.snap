@@ -4,13 +4,25 @@ exports[`<App /> render() renders the component 1`] = `
 <Container
   tag="div"
 >
-  <div>
-    <img
-      alt="Stargazer"
-      src="stargazer.svg"
-      width="40%"
-    />
-  </div>
+  <Row
+    tag="div"
+  >
+    <Col
+      className="titleStyle"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      STARGAZER
+    </Col>
+  </Row>
   <Row
     className="mt-3 mx-0"
     tag="div"

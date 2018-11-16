@@ -12,6 +12,12 @@ import PersonModalContainer from '../containers/PersonModalContainer';
 import PageSelectContainer from '../containers/PageSelectContainer';
 import '../utils/fontStyle.css';
 
+/*
+By using containers for the different functionality we
+have managed to 'shrink' the size of our App.js file
+to a neat and comprehensive format.
+*/
+
 function App() {
   return (
     <Container>
