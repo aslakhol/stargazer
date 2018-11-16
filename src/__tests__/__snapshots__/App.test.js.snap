@@ -5,7 +5,6 @@ exports[`<App /> render() renders the component 1`] = `
   tag="div"
 >
   <Row
-<<<<<<< HEAD
     tag="div"
   >
     <Col
@@ -25,10 +24,6 @@ exports[`<App /> render() renders the component 1`] = `
     </Col>
   </Row>
   <Row
-    className="mt-3 mx-0"
-=======
-    className="mt-3 "
->>>>>>> master
     tag="div"
   >
     <Col
