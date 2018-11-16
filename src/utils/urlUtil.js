@@ -13,9 +13,12 @@ const prepareFilterString = (filter) => {
   return `&exclude=${joined}`.toLowerCase();
 };
 
-const preparePaginationString = (pageNum = 0) => {
+const preparePaginationString = (pageNum, count) => {
   // expects 0-indexed page number
-  const offset = PAGE_SIZE * pageNum;
+  let offset = PAGE_SIZE * pageNum;
+  if (offset * 4 > count) {
+    offset = 0;
+  }
   return `&limit=${PAGE_SIZE}&offset=${offset}`;
 };
 
@@ -25,9 +28,9 @@ const prepareSortString = (sortBy, order) => {
   return `&sortBy=${sortBy}${dirStr}`;
 };
 
-export const createSearchQueryString = (query, filter, pageNum, sortBy) => {
+export const createSearchQueryString = (query, filter, pageNum, sortBy, count) => {
   const filterString = prepareFilterString(filter);
-  const paginationString = preparePaginationString(pageNum);
+  const paginationString = preparePaginationString(pageNum, count);
   const sortString = prepareSortString(sortBy);
   return `${API_ENDPOINT}people?search=${query}${filterString}${paginationString}${sortString}`;
 };
