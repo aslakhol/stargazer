@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Container,
   Row,
+  Col,
 } from 'reactstrap';
 
 import SearchPageContainer from '../containers/SearchPageContainer';
@@ -14,9 +15,11 @@ import stargazer from '../graphic/stargazer.svg';
 function App() {
   return (
     <Container>
-      <div>
-        <img width="40%" src={stargazer} alt="Stargazer" />
-      </div>
+      <Row>
+        <Col>
+          <img width="40%" src={stargazer} alt="Stargazer" />
+        </Col>
+      </Row>
       <Row className="mt-3 mx-0">
         <FilterButtonsContainer />
       </Row>

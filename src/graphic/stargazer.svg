@@ -7,5 +7,13 @@
 	.st1{font-family:'SFDistantGalaxy';}
 	.st2{font-size:262.9032px;}
 </style>
+<defs>
+  <style type="text/css">
+    @font-face {
+      font-family: SFDistantGalaxy;
+      src: url('../utils/SFDistantGalaxy.ttf');
+    }
+  </style>
+</defs>
 <text transform="matrix(1 0 0 1 -5.2197 233.7639)" class="st0 st1 st2">STARGAZER</text>
 </svg>
