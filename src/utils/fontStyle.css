@@ -1,6 +1,11 @@
-/* 
+/*
 A single stylesheet was needed to generate a header with appropriate font and scaling
 */
+
+@font-face {
+  font-family: 'SF Distant Galaxy';
+  src: url(SFDistantGalaxy.ttf);
+}
 
 .titleStyle {
   color: '#303030';
