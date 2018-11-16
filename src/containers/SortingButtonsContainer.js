@@ -4,7 +4,7 @@ import { onSortPress } from '../actions/multiActions';
 import SortingButtons from '../components/SortingButtons';
 
 const mapStateToProps = state => ({
-  sortBy: state.sort.column,
+  sortBy: state.sort.sortBy,
 });
 
 const mapDispatchToProps = dispatch => ({
