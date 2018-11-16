@@ -27,7 +27,7 @@ export const storeTimeout = timeout => ({ type: NEW_TIMEOUT, timeout });
 
 const fetchPersons = searchTerm => (dispatch, getState) => {
   const { filter, currentPage, sort } = getState();
-  const queryString = createSearchQueryString(searchTerm, filter, currentPage, sort.column);
+  const queryString = createSearchQueryString(searchTerm, filter, currentPage, sort.sortBy);
   dispatch(makeQuery(queryString, searchTerm));
   dispatch(requestPerson(queryString, searchTerm));
   fetch(queryString)
