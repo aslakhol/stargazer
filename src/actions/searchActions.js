@@ -6,6 +6,7 @@ import {
   API_TIMEOUT_DURATION,
 } from '../utils/constants';
 import { createSearchQueryString } from '../utils/urlUtil';
+import { fetchHistory } from './searchHistoryActions';
 
 export const makeQuery = (query, searchTerm) => ({ type: NEW_QUERY, query, searchTerm });
 export const requestPerson = (query, searchTerm) => ({
@@ -31,7 +32,8 @@ const fetchPersons = searchTerm => (dispatch, getState) => {
   dispatch(requestPerson(queryString, searchTerm));
   fetch(queryString)
     .then(response => response.json())
-    .then(json => dispatch(recievePerson(queryString, searchTerm, json)));
+    .then(json => dispatch(recievePerson(queryString, searchTerm, json)))
+    .then(x => dispatch(fetchHistory(x)));
 };
 
 export const fetchPersonsIfNeeded = query => (dispatch, getState) => {
