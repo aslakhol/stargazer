@@ -1,6 +1,6 @@
 import {
   REQUEST_HISTORY, SHOW_HISTORY, HIDE_HISTORY, RECEIVE_HISTORY,
-} from '../constants';
+} from '../utils/constants';
 
 const initialState = {
   queries: [],

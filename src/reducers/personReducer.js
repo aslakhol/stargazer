@@ -1,4 +1,4 @@
-import { SET_CURRENT_PERSON } from '../constants';
+import { SET_CURRENT_PERSON } from '../utils/constants';
 
 const initialState = {};
 

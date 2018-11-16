@@ -1,16 +1,29 @@
 import React from 'react';
 import {
   Container,
+  Col,
   Row,
 } from 'reactstrap';
 
 import SearchPageContainer from '../containers/SearchPageContainer';
 import SearchBarContainer from '../containers/SearchBarContainer';
 import SearchHistoryContainer from '../containers/SearchHistoryContainer';
+import FilterButtonsContainer from '../containers/FilterButtonsContainer';
+import PersonModalContainer from '../containers/PersonModalContainer';
+import PageSelectContainer from '../containers/PageSelectContainer';
+import SortingButtonsContainer from '../containers/SortingButtonsContainer';
 
 function App() {
   return (
     <Container>
+      <Row className="mt-3 ">
+        <Col>
+          <FilterButtonsContainer />
+        </Col>
+        <Col>
+          <SortingButtonsContainer />
+        </Col>
+      </Row>
       <Row className="my-3 mx-0">
         <SearchBarContainer />
       </Row>
@@ -20,6 +33,10 @@ function App() {
       <Row>
         <SearchHistoryContainer />
       </Row>
+      <Row>
+        <PageSelectContainer />
+      </Row>
+      <PersonModalContainer />
     </Container>
   );
 }

@@ -3,31 +3,35 @@ import {
   REQUEST_PERSON,
   RECIEVE_PERSON,
   NEW_TIMEOUT,
-  API_ENDPOINT,
   API_TIMEOUT_DURATION,
-} from '../constants';
+} from '../utils/constants';
+import { createSearchQueryString } from '../utils/urlUtil';
 
-export const makeQuery = query => ({ type: NEW_QUERY, query });
-export const requestPerson = query => ({
+export const makeQuery = (query, searchTerm) => ({ type: NEW_QUERY, query, searchTerm });
+export const requestPerson = (query, searchTerm) => ({
   type: REQUEST_PERSON,
   query,
+  searchTerm,
   requestedAt: Date.now(),
 });
-export const recievePerson = (query, response) => ({
+export const recievePerson = (query, searchTerm, response = { count: 0, row: [] }) => ({
   type: RECIEVE_PERSON,
   query,
-  response,
+  searchTerm,
+  count: response.count,
+  response: response.rows,
   recievedAt: Date.now(),
 });
 export const storeTimeout = timeout => ({ type: NEW_TIMEOUT, timeout });
 
-const fetchPersons = query => (dispatch) => {
-  const queryString = `${API_ENDPOINT}people?search=${query}`;
-  dispatch(makeQuery(query));
-  dispatch(requestPerson(query));
+const fetchPersons = searchTerm => (dispatch, getState) => {
+  const { filter, currentPage, sort } = getState();
+  const queryString = createSearchQueryString(searchTerm, filter, currentPage, sort.column);
+  dispatch(makeQuery(queryString, searchTerm));
+  dispatch(requestPerson(queryString, searchTerm));
   fetch(queryString)
     .then(response => response.json())
-    .then(json => dispatch(recievePerson(query, json)));
+    .then(json => dispatch(recievePerson(queryString, searchTerm, json)));
 };
 
 export const fetchPersonsIfNeeded = query => (dispatch, getState) => {

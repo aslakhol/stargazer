@@ -2,7 +2,7 @@ import {
   API_ENDPOINT,
   REQUEST_HISTORY,
   RECEIVE_HISTORY,
-} from '../constants';
+} from '../utils/constants';
 
 export const requestHistory = () => ({
   type: REQUEST_HISTORY,

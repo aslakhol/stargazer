@@ -5,6 +5,39 @@ exports[`<App /> render() renders the component 1`] = `
   tag="div"
 >
   <Row
+    className="mt-3 "
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Connect(FilterButtons) />
+    </Col>
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Connect(SortButtons) />
+    </Col>
+  </Row>
+  <Row
     className="my-3 mx-0"
     tag="div"
   >
@@ -16,5 +49,11 @@ exports[`<App /> render() renders the component 1`] = `
   >
     <Connect(SearchPage) />
   </Row>
+  <Row
+    tag="div"
+  >
+    <Connect(PageSelect) />
+  </Row>
+  <Connect(PersonModal) />
 </Container>
 `;
