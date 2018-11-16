@@ -15,7 +15,6 @@ export const receiveHistory = response => ({
 
 export const fetchHistory = () => (dispatch) => {
   const historyUrl = getHistoryUrl();
-  console.log(historyUrl);
   dispatch(requestHistory());
   fetch(historyUrl)
     .then(response => response.json())
