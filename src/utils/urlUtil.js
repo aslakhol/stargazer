@@ -15,15 +15,15 @@ const preparePaginationString = (pageNum = 0) => {
 };
 
 // This function was designed to make it easy to enable changing of sort directions.
-const prepareSortString = (column, direction) => {
-  const dirStr = direction ? `&direction=${direction}` : '';
-  return `&column=${column}${dirStr}`;
+const prepareSortString = (sortBy, order) => {
+  const dirStr = order ? `&order=${order}` : '';
+  return `&sortBy=${sortBy}${dirStr}`;
 };
 
-export const createSearchQueryString = (query, filter, pageNum, column) => {
+export const createSearchQueryString = (query, filter, pageNum, sortBy) => {
   const filterString = prepareFilterString(filter);
   const paginationString = preparePaginationString(pageNum);
-  const sortString = prepareSortString(column);
+  const sortString = prepareSortString(sortBy);
   return `${API_ENDPOINT}people?search=${query}${filterString}${paginationString}${sortString}`;
 };
 

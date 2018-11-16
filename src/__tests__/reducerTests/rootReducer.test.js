@@ -13,7 +13,7 @@ describe('rootReducer', () => {
         request: {
           count: 0, isFetching: false, query: '', receivedAt: 0, requestedAt: 0, result: [], searchTerm: '',
         },
-        sort: { column: 'id', direction: 'asc' },
+        sort: { sortBy: 'id', order: 'asc' },
         timeout: -1,
       };
 
@@ -33,7 +33,7 @@ describe('rootReducer', () => {
           modalOpen: false,
           request: {
             isFetching: false,
-            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&column=id',
+            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&sortBy=id',
             searchTerm: 'luke',
             requestedAt: 1542373724160,
             count: 1,
@@ -57,7 +57,7 @@ describe('rootReducer', () => {
           timeout: 37,
           filter: [],
           currentPage: 0,
-          sort: { column: 'id', direction: 'asc' },
+          sort: { sortBy: 'id', order: 'asc' },
         }, {
           type: 'SET_CURRENT_PERSON',
           data: {
@@ -97,7 +97,7 @@ describe('rootReducer', () => {
           modalOpen: false,
           request: {
             isFetching: false,
-            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&column=id',
+            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&sortBy=id',
             searchTerm: 'luke',
             requestedAt: 1542373724160,
             count: 1,
@@ -121,7 +121,7 @@ describe('rootReducer', () => {
           timeout: 37,
           filter: [],
           currentPage: 0,
-          sort: { column: 'id', direction: 'asc' },
+          sort: { sortBy: 'id', order: 'asc' },
         });
         state = rootReducer({
           currentPerson: {
@@ -143,7 +143,7 @@ describe('rootReducer', () => {
           modalOpen: false,
           request: {
             isFetching: false,
-            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&column=id',
+            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&sortBy=id',
             searchTerm: 'luke',
             requestedAt: 1542373724160,
             count: 1,
@@ -167,7 +167,7 @@ describe('rootReducer', () => {
           timeout: 37,
           filter: [],
           currentPage: 0,
-          sort: { column: 'id', direction: 'asc' },
+          sort: { sortBy: 'id', order: 'asc' },
         }, { type: 'OPEN_MODAL' });
         expect(state).toEqual({
           currentPerson: {
@@ -189,7 +189,7 @@ describe('rootReducer', () => {
           modalOpen: true,
           request: {
             isFetching: false,
-            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&column=id',
+            query: 'http://it2810-06.idi.ntnu.no/api/api/people?search=luke&limit=4&offset=0&sortBy=id',
             searchTerm: 'luke',
             requestedAt: 1542373724160,
             count: 1,
@@ -213,7 +213,7 @@ describe('rootReducer', () => {
           timeout: 37,
           filter: [],
           currentPage: 0,
-          sort: { column: 'id', direction: 'asc' },
+          sort: { sortBy: 'id', order: 'asc' },
         });
       });
     });
