@@ -31,5 +31,5 @@ export const API_TIMEOUT_DURATION = 500;
 export const API_ENDPOINT = 'http://it2810-06.idi.ntnu.no/api/api/';
 export const IMG_URL_BASE = 'https://starwars-visualguide.com/assets/img/characters/';
 export const HISTORY_ENDPOINT = 'search';
-export const SEACH_HISTORY_ENTRIES = 5;
+export const SEARCH_HISTORY_ENTRIES = 5;
 export const PAGE_SIZE = 4;

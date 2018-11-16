@@ -1,4 +1,9 @@
-import { API_ENDPOINT, IMG_URL_BASE, PAGE_SIZE, SEACH_HISTORY_ENTRIES } from './constants';
+import {
+  API_ENDPOINT,
+  IMG_URL_BASE,
+  PAGE_SIZE,
+  HISTORY_ENDPOINT,
+} from './constants';
 
 const prepareFilterString = (filter) => {
   if (filter.length === 0) {
@@ -29,4 +34,4 @@ export const createSearchQueryString = (query, filter, pageNum, column) => {
 
 export const getImgURL = id => `${IMG_URL_BASE}${id}.jpg`;
 
-export const getHistoryUrl = () => `${API_ENDPOINT}${SEACH_HISTORY_ENTRIES}`;
+export const getHistoryUrl = () => `${API_ENDPOINT}${HISTORY_ENDPOINT}`;

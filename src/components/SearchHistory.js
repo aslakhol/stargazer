@@ -5,7 +5,7 @@ import {
   ListGroup,
   ListGroupItem,
 } from 'reactstrap';
-import { SEACH_HISTORY_ENTRIES } from '../utils/constants';
+import { SEARCH_HISTORY_ENTRIES } from '../utils/constants';
 
 const SearchHistory = (props) => {
   const {
@@ -22,7 +22,7 @@ const SearchHistory = (props) => {
       <Row>
         <ListGroup className="my-3">
           {isOpen
-            && searches.slice(0, SEACH_HISTORY_ENTRIES).map(search => (
+            && searches.slice(0, SEARCH_HISTORY_ENTRIES).map(search => (
               <ListGroupItem key={search.id}>{search.search_string}</ListGroupItem>
             ))
           }
