@@ -10,14 +10,14 @@ import SearchBarContainer from '../containers/SearchBarContainer';
 import FilterButtonsContainer from '../containers/FilterButtonsContainer';
 import PersonModalContainer from '../containers/PersonModalContainer';
 import PageSelectContainer from '../containers/PageSelectContainer';
-import stargazer from '../graphic/stargazer.svg';
+import '../utils/fontStyle.css';
 
 function App() {
   return (
     <Container>
       <Row>
-        <Col>
-          <img width="40%" src={stargazer} alt="Stargazer" />
+        <Col className="titleStyle">
+          STARGAZER
         </Col>
       </Row>
       <Row className="mt-3 mx-0">

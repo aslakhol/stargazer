@@ -1,0 +1,10 @@
+/* 
+A single stylesheet was needed to generate a header with appropriate font and scaling
+*/
+
+.titleStyle {
+  color: '#303030';
+  font-Family: "SF Distant Galaxy";
+  font-size: 3rem;
+  size: 'fit';
+}
