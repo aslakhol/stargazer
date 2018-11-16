@@ -2,7 +2,9 @@
 
 import { setCurrentPerson } from './personActions';
 import { setModalOpen } from './modalActions';
-import { includeSelectedInQuery, excludeSelectedInQuery } from './filterActions';
+import { showHistory, hideHistory } from './historyButtonAction';
+import { fetchHistory } from './searchHistoryActions';
+import { includeSelectedInQuery, excludeSelectedInQuery, sortBySelected } from './buttonActions';
 import { fetchPersonsIfNeeded } from './searchActions';
 import { goToPage, goToNextPage, goToPrevPage } from './paginationActions';
 
@@ -26,6 +28,15 @@ export const clickPersonCard = data => (dispatch) => {
   dispatch(setModalOpen());
 };
 
+export const clickHistoryButton = () => (dispatch, getState) => {
+  if (!getState().history.isOpen) {
+    dispatch(showHistory());
+    dispatch(fetchHistory());
+  } else {
+    dispatch(hideHistory());
+  }
+};
+
 export const pressEnterPersonCard = (event, person) => (dispatch) => {
   const KEY_ENTER = 13;
   const KEY_SPACE = 32;
@@ -42,4 +53,9 @@ export const onFilterCheck = selected => (dispatch, getState) => {
     dispatch(includeSelectedInQuery(selected));
     dispatch(fetchPersonsIfNeeded(getState().request.searchTerm));
   }
+};
+
+export const onSortPress = selected => (dispatch, getState) => {
+  dispatch(sortBySelected(selected));
+  dispatch(fetchPersonsIfNeeded(getState().request.searchTerm));
 };

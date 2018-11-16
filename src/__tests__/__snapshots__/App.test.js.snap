@@ -5,6 +5,7 @@ exports[`<App /> render() renders the component 1`] = `
   tag="div"
 >
   <Row
+<<<<<<< HEAD
     tag="div"
   >
     <Col
@@ -25,9 +26,39 @@ exports[`<App /> render() renders the component 1`] = `
   </Row>
   <Row
     className="mt-3 mx-0"
+=======
+    className="mt-3 "
+>>>>>>> master
     tag="div"
   >
-    <Connect(FilterButtons) />
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Connect(FilterButtons) />
+    </Col>
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Connect(SortButtons) />
+    </Col>
   </Row>
   <Row
     className="my-3 mx-0"
@@ -45,6 +76,11 @@ exports[`<App /> render() renders the component 1`] = `
     tag="div"
   >
     <Connect(PageSelect) />
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Connect(SearchHistory) />
   </Row>
   <Connect(PersonModal) />
 </Container>

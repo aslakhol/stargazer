@@ -6,6 +6,7 @@ import {
   API_TIMEOUT_DURATION,
 } from '../utils/constants';
 import { createSearchQueryString } from '../utils/urlUtil';
+import { fetchHistory } from './searchHistoryActions';
 
 export const makeQuery = (query, searchTerm) => ({ type: NEW_QUERY, query, searchTerm });
 export const requestPerson = (query, searchTerm) => ({
@@ -25,13 +26,14 @@ export const recievePerson = (query, searchTerm, response = { count: 0, row: [] 
 export const storeTimeout = timeout => ({ type: NEW_TIMEOUT, timeout });
 
 const fetchPersons = searchTerm => (dispatch, getState) => {
-  const { filter, currentPage } = getState();
-  const queryString = createSearchQueryString(searchTerm, filter, currentPage);
+  const { filter, currentPage, sort } = getState();
+  const queryString = createSearchQueryString(searchTerm, filter, currentPage, sort.sortBy);
   dispatch(makeQuery(queryString, searchTerm));
   dispatch(requestPerson(queryString, searchTerm));
   fetch(queryString)
     .then(response => response.json())
-    .then(json => dispatch(recievePerson(queryString, searchTerm, json)));
+    .then(json => dispatch(recievePerson(queryString, searchTerm, json)))
+    .then(x => dispatch(fetchHistory(x)));
 };
 
 export const fetchPersonsIfNeeded = query => (dispatch, getState) => {

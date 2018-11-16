@@ -7,7 +7,14 @@ const FilterButtons = (props) => {
   return (
     <ButtonGroup>
       {filterOptions.map(option => (
-        <Button color="primary" onClick={() => onCheck(option)} active={!filter.includes(option)} key={option}>{option}</Button>
+        <Button
+          color="primary"
+          onClick={() => onCheck(option)}
+          active={!filter.includes(option)}
+          key={option}
+        >
+          {option}
+        </Button>
       ))}
     </ButtonGroup>
   );
