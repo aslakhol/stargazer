@@ -31,10 +31,10 @@ function App() {
         <SearchPageContainer />
       </Row>
       <Row>
-        <SearchHistoryContainer />
+        <PageSelectContainer />
       </Row>
       <Row>
-        <PageSelectContainer />
+        <SearchHistoryContainer />
       </Row>
       <PersonModalContainer />
     </Container>
