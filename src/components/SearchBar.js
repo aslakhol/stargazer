@@ -9,7 +9,7 @@ const SearchBar = (props) => {
 
   return (
     <InputGroup>
-      <Input placeholder="Search for a character!" onChange={e => onChange(e.target.value)} />
+      <Input placeholder="Search for a character!" onChange={e => onChange(e.target.value)} autoFocus />
     </InputGroup>
   );
 };
