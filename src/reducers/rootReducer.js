@@ -5,6 +5,7 @@ import searchReducer from './searchReducer';
 import timeoutReducer from './timeoutReducer';
 import filterReducer from './filterReducer';
 import paginationReducer from './paginationReducer';
+import sortReducer from './sortReducer';
 
 export default combineReducers({
   currentPerson: personReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   timeout: timeoutReducer,
   filter: filterReducer,
   currentPage: paginationReducer,
+  sort: sortReducer,
 });

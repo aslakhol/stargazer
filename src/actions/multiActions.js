@@ -2,7 +2,7 @@
 
 import { setCurrentPerson } from './personActions';
 import { setModalOpen } from './modalActions';
-import { includeSelectedInQuery, excludeSelectedInQuery } from './filterActions';
+import { includeSelectedInQuery, excludeSelectedInQuery, sortBySelected } from './buttonActions';
 import { fetchPersonsIfNeeded } from './searchActions';
 import { goToPage, goToNextPage, goToPrevPage } from './paginationActions';
 
@@ -42,4 +42,9 @@ export const onFilterCheck = selected => (dispatch, getState) => {
     dispatch(includeSelectedInQuery(selected));
     dispatch(fetchPersonsIfNeeded(getState().request.searchTerm));
   }
+};
+
+export const onSortPress = selected => (dispatch, getState) => {
+  dispatch(sortBySelected(selected));
+  dispatch(fetchPersonsIfNeeded(getState().request.searchTerm));
 };

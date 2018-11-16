@@ -14,6 +14,7 @@ export const NEW_QUERY = 'NEW_QUERY';
 export const NEW_TIMEOUT = 'NEW_TIMEOUT';
 export const INCLUDE_SELECTED = 'INCLUDE_SELECTED';
 export const EXCLUDE_SELECTED = 'EXCLUDE_SELECTED';
+export const SORT_BY_SELECTED = 'SORT_BY_SELECTED';
 
 // Pagination
 export const SET_PAGE = 'SET_PAGE';
