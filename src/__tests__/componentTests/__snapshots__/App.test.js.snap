@@ -5,7 +5,7 @@ exports[`<App /> render() renders the component 1`] = `
   tag="div"
 >
   <Row
-    className="mt-3 "
+    className="mt-3"
     tag="div"
   >
     <Col

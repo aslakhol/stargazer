@@ -6,7 +6,6 @@ export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const SHOW_HISTORY = 'SHOW_HISTORY';
 export const HIDE_HISTORY = 'HIDE_HISTORY';
 
-
 // Data Related
 export const SET_CURRENT_PERSON = 'SET_CURRENT_PERSON';
 export const REQUEST_HISTORY = 'REQUEST_HISTORY';
