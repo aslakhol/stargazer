@@ -10,8 +10,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onCheck: selected => dispatch(onFilterCheck(selected)),
-  // onCheck: selected => onFilterCheck(selected),
-
 });
 
 const FilterButtonsContainer = connect(
