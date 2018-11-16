@@ -13,12 +13,15 @@ const prepareFilterString = (filter) => {
   return `&exclude=${joined}`.toLowerCase();
 };
 
-const preparePaginationString = (pageNum, count) => {
+const preparePaginationString = (pageNum) => {
+  // let offset = PAGE_SIZE * pageNum;
+  // if (offset * 4 > count) {
+  //   offset = 0;
+  // }
+
   // expects 0-indexed page number
-  let offset = PAGE_SIZE * pageNum;
-  if (offset * 4 > count) {
-    offset = 0;
-  }
+
+  const offset = PAGE_SIZE * pageNum;
   return `&limit=${PAGE_SIZE}&offset=${offset}`;
 };
 
